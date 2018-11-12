@@ -4,5 +4,21 @@
 
 layout: page
 ---
+  <hr>
+  <b> Welcome to my blogging channel. </b>
+  
 
-This is the index page.
+<img src="/assets/img/Home_Page.jpg" alt="Home Page">
+
+Latest Blogs
+
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
+
+* [About](http://joshis1.github.io/about)
+* [Code Download](http://joshis1.github.io/about)

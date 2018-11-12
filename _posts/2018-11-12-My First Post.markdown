@@ -1,0 +1,7 @@
+---
+layout : post
+
+
+---
+
+My content

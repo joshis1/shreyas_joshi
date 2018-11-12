@@ -4,6 +4,6 @@ title: About
 permalink: /about/
 ---
 
-Shreyas joshi
+Shreyas Joshi
 
 <img src="/assets/img/About_Pic.jpg" alt="About Pic">

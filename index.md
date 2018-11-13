@@ -21,4 +21,3 @@ Latest Blogs
 </ul>
 
 * [About](http://joshis1.github.io/about)
-* [Code Download](http://joshis1.github.io/about)

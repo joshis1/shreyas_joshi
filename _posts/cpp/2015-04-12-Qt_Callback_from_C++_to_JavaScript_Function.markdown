@@ -8,8 +8,8 @@ This article discusses on how to call a JavaScript function from C++ using
 Qt Framework. This framework uses Qt-Webkit. Currently, there are two ways
 to achieve this.
 
-1. Install Signals and Slots for the Javscript function.
-2. Using the in-built API – evaluate JavaScript
+1. **Install Signals and Slots for the Javscript function.**
+2. **Using the in-built API – evaluate JavaScript**
 Note: The Javascript evaluation by the C++ class will be understood once the
 web-page is loaded. Thus, we should add the JavaScript to the window
 object, once the web-page is loaded. This can be done by installing the slot

@@ -13,7 +13,7 @@ relationship in order to design any object .
 Code Re-use – This is one of the attribute of OOPs. This is attained either
 by Composition or Inheritance.
 
-How to identify Inheritance?
+**How to identify Inheritance?**
 The easiest way to identify the candidate for inheritance is by asking yourself
 a quest ion – “Is this new candidate “is a” / kind /sub-type of an old
 candidate?.” If the answer is yes, then it is very much suitable for inherit ance.
@@ -29,7 +29,7 @@ we will see generalization and realization in inheritance.
 Example – PVR Set top box is a type/kind of Settopbox(STB). Here, the STB
 is the base class, and the PVR STB is a derived class.
 
-How to identify Composition?
+**How to identify Composition?**
 The easiest way to identify the candidate for composition is by asking
 yourself a question – “Is this new candidate has an old candidate?. If the
 answer is yes, then it is very much suitable for composition. Here, the new
@@ -66,8 +66,8 @@ class A.
 
 <img src="/assets/img/Directional_Association.png" alt="Directional_Association">
 
-Types of Directional Association – “Has -a” Relationship
-1. Aggregation – Also, this is called a weak composition. Here, the object
+**Types of Directional Association – “Has -a” Relationship**
+1. **Aggregation** – Also, this is called a weak composition. Here, the object
 that is contained by the new object can exist independently. The life time of
 the contained object is not controlled by the container object . Generally, the
 contained object is passed to the constructor of the container object . There
@@ -84,7 +84,7 @@ terms of loosely coupled or tightly coupled classes.
 
 <img src="/assets/img/Aggregation.png" alt="Aggregation">
 
-2. Composition - Also, this is called a strong composition. Here, the object
+2. **Composition** - Also, this is called a strong composition. Here, the object
 that is contained by the new object cannot exist independently. The life time
 of the contained object is controlled by the container object . Many people
 refer ‘composition’ as a special case of ‘aggregation’.
@@ -95,9 +95,9 @@ the coupling between them is strong.
 
 <img src="/assets/img/Composition.png" alt="Composition">
 
-Inheritance - ” IS A” Relationship
+**Inheritance - ” IS A” Relationship**
 Before we dive into inheritance, let’s understand the two types of classes.
-a. Abstract class – This is a blue print – model of the object . However, it
+a. **Abstract class** – This is a blue print – model of the object . However, it
 cannot be instantiated. An abstract class has a few general methods implemented.
 They generally have protected member variables that can be inherited by the
 sub-class/derived class. However, there are a set of methods, which are not
@@ -114,7 +114,7 @@ virtual void unImplementedMethod(void) = 0;
 
 {% endhighlight %}
 
-b. Interface class – This is a blue print – model of the object. However, it
+b. **Interface class** – This is a blue print – model of the object. However, it
 cannot be instantiated. An interface class has only pure virtual methods i.e.
 properties that is expected by the class. A derived class will implement the
 interface class. Unlike abstract class, the interface class has no methods
@@ -122,14 +122,14 @@ implemented. Also, it doesn’t have any member variables. A derived/subclass
 always implements the interface class. Generally, the name of interface
 class starts with the letter ‘I’.
 
-How an ‘Inheritance’ is synthesized ?
-1. Generalization – Here the derived class extends the abstract class.
+**How an ‘Inheritance’ is synthesized ?**
+1. **Generalization** – Here the derived class extends the abstract class.
 Basically, the base class – Abstract class is a generalized class. Here, the
 derived class is a specialized class.
 
 <img src="/assets/img/Generalization.png" alt="Generalization">
 
-2. Realization – Here the derived class implements the interface class.
+2. **Realization** – Here the derived class implements the interface class.
 
 <img src="/assets/img/Realization.png" alt="Realization">
 
@@ -141,7 +141,7 @@ answer is composition. Practically speaking, private inheritance is not
 preferred to do composition -at-least I didn’t see in the industry. Let’s
 see how private inheritance does the job of composition.
 
-Property of Private inheritance -
+**Property of Private inheritance -**
 1. All the private members of the base class is not inherited.
 2. All the public members of the base class is inherited as private only.
 3. All the protected members of the base class is inherited as private only.

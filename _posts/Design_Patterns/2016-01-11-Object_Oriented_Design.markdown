@@ -6,11 +6,11 @@ categories: Design_Patterns
 ---
 This article is all about Design Principles.
 
-** Why do we need Software Design Principles? **
+**Why do we need Software Design Principles?**
 
 These are the principles that should be used to avoid a bad software design.
 
-** Properties of Object Oriented language **
+**Properties of Object Oriented language**
 
 1. Encapsulation – It refers to packing of data and functions into a single
 component . This is done in the class.
@@ -42,7 +42,7 @@ application.
 
 Object Orient ed Design Principles are called “SOLID“.
 
-** SOLID stands for – **
+**SOLID stands for –**
 
 a. S – Single Responsibility. <br>
 b. O – Open Closed. <br>
@@ -50,21 +50,21 @@ c. L – LISKOV Substitution. <br>
 d. I – Interface Segregation. <br>
 e. D – Dependency Inversion. <br>
 
-** Single Responsibility Principle (SRP) ** – It states that each class should have a single responsibility, and the responsibility should be encapsulated. A
+**Single Responsibility Principle (SRP)** – It states that each class should have a single responsibility, and the responsibility should be encapsulated. A
 class should address/focus only one concern. For example, a class
 responsibility is used to fetch the data. Other class responsibility is to process the data. The class shouldn’t club the two responsibilities into one class – fetching the data and processing of the data. With this, you decouple
 the code. Also, the test cycle can be reduced depending on the changes done.
 Thus, you reduce the risk of any software changes by apprehending the
 possible cause.
 
-** (Polymorphism)Open/Closed Principle (OCP) ** – It states that classes and
+**(Polymorphism)Open/Closed Principle (OCP)** – It states that classes and
 methods should be allowed for extension. However, they shouldn’t be allowed
 for modification.This is mainly related to inheritance – code re-usability.
 Here, the abstract interface can be re-used/extend through inheritance.
 However, the existing implementation is closed for modification.
 At the same time, the new implementation for the interface can be done – ext ension. By religiously following this principle, we avoid the repetitive tasks like – code review and unit-test for the well proven code.
 
-** LISKOV Substitution Principle (LSP) ** – It states that the object should be
+**LISKOV Substitution Principle (LSP)** – It states that the object should be
 replaceable with its subtype without altering the base class. This principle
 helps to identify whether inheritance is really applicable or not . You may
 mistakenly think that the part icular object is a type of an object .
@@ -80,7 +80,7 @@ meaningless. Also, if there is any need to change a base class to
 accommodate a sub-class, then question yourself – “Is inheritance really
 applicable here.” Generally, the answer is no.
 
-** Interface Segregation Principle (ISP) ** – It states that a client should not
+**Interface Segregation Principle (ISP)** – It states that a client should not
 depend on the methods that they don’t use. Again, this is related to
 inheritance, we should not have a polluted or fat interfaces, which means that
 the interface shouldn’t have methods that are unrelated or not required. We
@@ -149,7 +149,7 @@ int main()
 
 {% endhighlight %}
 
-** Dependency Inversion Principle ( DIP) ** - This principle states that the high
+**Dependency Inversion Principle ( DIP)** - This principle states that the high
 level module shouldn’t depend on the low level modules directly. Instead, a
 high level class should use interface class of a low level class in order to
 abstract the direct call to a low level class. With the aid of this principle,

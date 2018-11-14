@@ -44,11 +44,11 @@ Object Orient ed Design Principles are called “SOLID“.
 
 SOLID stands for –
 
-a. S – Single Responsibility.
-b. O – Open Closed.
-c. L – LISKOV Substitution.
-d. I – Interface Segregation.
-e. D – Dependency Inversion.
+a. S – Single Responsibility. <br>
+b. O – Open Closed. <br>
+c. L – LISKOV Substitution. <br>
+d. I – Interface Segregation. <br>
+e. D – Dependency Inversion. <br>
 
 Single Responsibility Principle (SRP) – It states that each class should have a single responsibility, and the responsibility should be encapsulated. A
 class should address/focus only one concern. For example, a class

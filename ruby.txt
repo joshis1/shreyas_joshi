@@ -1,0 +1,302 @@
+Jekyll - ruby
+
+ruby gem - ruby package manager
+
+Mac - ruby and gem already install.
+
+
+#ruby -v
+
+#gem -v
+
+gem install jekyll bundle
+
+####
+
+boilerplate code
+
+jekyll new sj_blog
+
+bundle exec jekyll serve
+
+later on 
+
+jekyll serve
+
+_site - finished final version goes here
+
+_config.yml -- 
+
+yaml file - language to store key, value pairs
+
+Front matters 0 
+
+Tile, page, author 
+
+md - mark down file
+
+Font end - YAML or JSON
+
+post can be md or html page.
+
+---
+
+layout: "post"
+
+title = "This is the new title"
+
+---
+
+_drafts
+
+jekyll server --_drafts
+
+####
+
+General pages -
+
+###########
+
+permlink -- permanent url to the website
+
+/:categories/:day/:year/:month/:title.html
+
+__config.yaml
+
+plugins:
+
+defaults:
+ -
+    scope:
+    path: ""
+    type: "post"
+    values:
+      layout: "post"
+      
+whenever __config.yaml is changed, need to restart the server
+
+
+    
+
+
+
+>>>>>>>>>>>>>>>.
+
+
+
+
+
+jekyll-theme 
+
+GemFile -- 
+
+gem "minima" ,
+
+gem "jekyll-theme-hacker"
+
+>>
+bundle install 
+
+########
+
+bundle exec jekyll serve
+
+##
+
+layout - defaults
+
+>> check layout folder in github
+
+##############
+
+
+_layouts 
+
+post.html
+
+<h1> This is a post </h1>
+
+post.hml
+
+<hr>
+
+{ { content } }
+
+page.html
+
+#############
+
+variables --
+
+{ {content} } 
+
+---
+
+author: "SJ"
+
+--
+
+<h1> {{ layout.author }} </h1>
+ <h1> {{ page.title }} </h1>
+ 
+ 
+ <document website>
+ jckyll - variables
+ 
+ #
+ _includes
+ 
+ headers for website
+ 
+ headers.html
+ 
+ <h1> { {include.color} {site.title} } </h1>
+ 
+ <hr> <br>
+ 
+ ################
+ put this inside layouts
+ 
+ <body>
+ 
+ { % include headers.html color="blue" % }
+ 
+ looping through Posts
+ 
+ ##
+ 
+ home.html
+ 
+ { % for post in site.posts %}
+ 
+    <li> a href = "{{post.url}}">{post.title}}</a></li>
+ 
+ { % endfor %}
+ 
+ 
+ Conditionals 
+ 
+ 
+{ % if page.title == "My first Post" %}
+  This is the first post
+  
+{% elseif page.title == "My second Post" %}
+   This is the second Page
+   
+{% else %}
+  This is another Post
+{% endif %}
+
+Data files
+
+YAML, JSON or CSV
+
+_data
+
+people.yml
+
+- name: "SJ"
+ occupation: "SW"
+ 
+layout -
+
+{ { % for person in site.data.people %} }
+  {{ person.name}, {person.occupation}} <br>
+
+{ %endfor %}
+
+
+
+Static files --
+Image --
+
+assets --
+
+  logo.png
+  cat.jpeg
+  
+home.html
+
+{ % for file in site.static_files %}
+{% if file.image %}
+  <img src="{{file.path}}" alt="{file.name}">
+ {% endif %}
+ {{file.path}} <br>
+{% endfor %}
+
+
+_config.yaml
+
+plugins:
+
+defaults:
+ - scope:
+    path: "assets/img"
+    values: 
+     image: true
+
+#######
+host on github -
+
+static website
+
+git install
+github account
+
+github - new repository
+
+sj_blog
+
+don't initialize with readme.
+
+_config.yaml
+
+baseurl: "sj_blog"
+
+git init
+
+git checkout -b sj-pages
+
+git add .
+
+git commit -m "Initial config"
+
+git remote add origin <github link>
+
+git push origin sj-pages
+
+
+look for gh-pages in github
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+

@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Shreyas Joshi
+**Shreyas Joshi**
 
 [linkedin](https://www.linkedin.com/in/shreyas-joshi-20640b22/)
 

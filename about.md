@@ -12,9 +12,9 @@ Shreyas Joshi
 
 [flickr](https://www.flickr.com/photos/101288163@N03/)
 
-   Articles magazine
+   **Articles magazine**
 
-[Qt-Webkit - Mobile Apps] (https://opensourceforu.com/2014/09/qt-webkit-a-quick-way-to-develop-a-destop-or-mobile-app/)
+[Qt-Webkit - Mobile Apps](https://opensourceforu.com/2014/09/qt-webkit-a-quick-way-to-develop-a-destop-or-mobile-app/)
 
 [Jenkins](https://opensourceforu.com/2014/02/manage-routine-tasks-jenkins/)
 

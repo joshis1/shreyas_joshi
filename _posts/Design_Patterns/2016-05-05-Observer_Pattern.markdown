@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "2016-05-05"
+title:  "Observer_Pattern"
 date:   2016-01-11 14:13:31 +1300
 categories: Design_Patterns
 ---

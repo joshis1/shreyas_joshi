@@ -52,7 +52,8 @@ __Chain of Responsibility__
 Responsibility’ design pattern here?**
 
 1. XMPP command Enums – All the commands that can be supported by the
-STB system. We can always extend it .
+STB system. We can always extend it.
+
 2. XMPP Stanza – This is the base class – head node for the chain of
 responsibility principle i.e. Singly linked list. A command/message will always be dispatched first to this Head node of the pipeline. If the message cannot be
 handled, then it will call it’s next object to handle it. This way, the message will be delegated to next object unless the message can be handled. This class
@@ -60,83 +61,85 @@ should have a routine/method to build the singly linked list i.e next pointer.
 A client will dispatch the XMPP commands to this class object only. Also, it will
 register itself with this class. Internally, during registration, it will append the new object into its singly linked list. Also, this class will have a
 virtual method to handle the message. This class will just delegate the message to its next object .
+
 3. XMPP – pipeline objects – These can be extended easily. For the given
 problem, the XMPP pipeline objects are – codeDownProcessor,
 hddDiagnosticsProcessor, and rebootStbProcessor. Each of these objects
 will implement the virtual method to handle the message. If any of the object
 cannot handle the message, then it will call the head node/super class/base
 class to delegate the message to its next object.
+
 4. client – The client will create all the pipeline objects and the base object i.e. XMPP Stanza. All the pipeline objects will be registered with the head node i.e. XMPP Stanza. As discussed earlier, during registration, the head node/base
 class will append the pipeline object to its singly linked list.
 
 Here is the code for each class.
 
-1. XMPP command Enums –
+  * XMPP command Enums
 
+ {% highlight ruby %}
 
-{% highlight ruby %}
-
-#ifndef XMPPCOMMANDS_H
-#define XMPPCOMMANDS_H
-enum xmppCommands
-{
-  codeDownloadProcess,
-  hddDiagnosticsProcess,
-  rebootStbProcess,
-  MAX_COMMAND
-};
-#endif // XMPPCOMMANDS_H
-
-{% endhighlight %}
-
-2. XMPP Stanza – Head node/ Super Class/ Base class
-
-{% highlight ruby %}
-
-#ifndef XMPPSTANZA_H
-#define XMPPSTANZA_H
-#include "XmppCommands.h"
-#include <QDebug>
-class XmppStanza
-{
-  private:
-    XmppStanza * m_pnext;
-  public:
-    XmppStanza()
-    {
-      m_pnext = NULL;
-    }
-  /** build a singly linked list ** /
-    void addNextStanzaProcessor(XmppStanza * next)
-    {
-      if( m_pnext)
-      {
-        m_pnext->addNextStanzaProcessor(next);
-      }
-      else
-      {
-        m_pnext = next;
-      }
-    }
-
-    virtual void processStanza(xmppCommands commands)
-    {
-      if( m_pnext )
-      {  
-        m_pnext->processStanza(commands);
-      }
-    }
-    ~XmppStanza()
-    {
-      qDebug()<<"Destructor of Xmpp Stanza is invoked";
-    }
-};
-
-#endif // XMPPSTANZA_H
+  #ifndef XMPPCOMMANDS_H
+  #define XMPPCOMMANDS_H
+  enum xmppCommands
+  {
+    codeDownloadProcess,
+    hddDiagnosticsProcess,
+    rebootStbProcess,
+    MAX_COMMAND
+  };
+// XMPPCOMMANDS_H
+  #endif
 
 {% endhighlight %}
 
-3. Pipeline Object – codeDownProcessor.
+  * XMPP Stanza – Head node/ Super Class/ Base class
+
+  {% highlight ruby %}
+
+  #ifndef XMPPSTANZA_H
+  #define XMPPSTANZA_H
+  #include "XmppCommands.h"
+  #include <QDebug>
+  class XmppStanza
+  {
+    private:
+      XmppStanza * m_pnext;
+    public:
+      XmppStanza()
+      {
+        m_pnext = NULL;
+      }
+      /** build a singly linked list ** /
+      void addNextStanzaProcessor(XmppStanza * next)
+      {
+        if( m_pnext)
+        {
+          m_pnext->addNextStanzaProcessor(next);
+        }
+        else
+        {
+          m_pnext = next;
+        }
+      }
+
+      virtual void processStanza(xmppCommands commands)
+      {
+        if( m_pnext )
+        {   
+          m_pnext->processStanza(commands);
+        }
+      }
+      ~XmppStanza()
+      {
+        qDebug()<<"Destructor of Xmpp Stanza is invoked";
+      }
+};
+  #endif // XMPPSTANZA_H
+
+{% endhighlight %}
+
+
+  * Pipeline Object – codeDownProcessor.
 
 {% highlight ruby %}
 
@@ -175,7 +178,8 @@ class codeDownloadProcessor : public XmppStanza
 
 {% endhighlight %}
 
-4. Pipeline Object – hddDiagnosticsProcessor.
+
+  * Pipeline Object – hddDiagnosticsProcessor.
 
 {% highlight ruby %}
 
@@ -214,7 +218,8 @@ class hddDiagnosticsProcessor : public XmppStanza
 
 {% endhighlight %}
 
-5. Pipeline Object – rebootStbProcessor.
+
+  * Pipeline Object – rebootStbProcessor.
 
 {% highlight ruby %}
 
@@ -253,7 +258,8 @@ class rebootStbProcessor : public XmppStanza
 
 {% endhighlight %}
 
-6. Client
+
+  * Client
 
 {% highlight ruby %}
 

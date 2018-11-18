@@ -42,7 +42,7 @@ specs is passed by the client ).
 **Analogy:**
 
 The director is like a waiter in the restaurant. The builders are the restaurant
-staff . A client will speak t o director/waiter to order a product. Before
+staff . A client will speak to director/waiter to order a product. Before
 ordering to the director, a client will get a specific(menu) from the builder.
 Also, a client will pass this specific to the waiter/director.
 Later, a direct or/waiter will prepare (build) the order and will pass to the
@@ -64,9 +64,9 @@ Let’s see the UML diagram here.
 
 1. The object interface is tuner here. The tuner has the following properties.
 
-a. setTunerFEC()
-b. setTunerPolarization()
-c. setTunerModulationType()
+a. setTunerFEC() <br>
+b. setTunerPolarization() <br>
+c. setTunerModulationType() <br>
 This is nothing but a behaviour of the object – tuner.
 
 2. Create a builder abstract class.
@@ -82,7 +82,9 @@ methods – setTunerModulationType()
 hold the reference to the builder. With the aid of a builder reference, it will
 call the specific build. For example, build TunerFEC, build
 TunerPolarization(), and build setTunerModulationType().
+
 6. Finally, the director will return the final product.
+
 7. A client will create a builder type. For example, terrestrial type.
 Later, it will pass the terrestrial builder object to the director. The director
 will call the build operations of the terrestrial builder to create a final product.

@@ -64,31 +64,31 @@ Let’s see the UML diagram here.
 
 1. The object interface is tuner here. The tuner has the following properties.
 
-a. setTunerFEC() <br>
-b. setTunerPolarization() <br>
-c. setTunerModulationType() <br>
-This is nothing but a behaviour of the object – tuner.
+  a. setTunerFEC() <br>
+  b. setTunerPolarization() <br>
+  c. setTunerModulationType() <br>
+    This is nothing but a behaviour of the object – tuner.
 
 2. Create a builder abstract class.
-a. This should build the TunerFEC(), by calling the tuner behaviour methods –
-setTunerFEC()
-b. This should build the TunerPolarization(), by calling the tuner behaviour
-methods – set TunerPolarization()
-c. This should build the TunerModulationType(), by calling the tuner behaviour
-methods – setTunerModulationType()
+  a. This should build the TunerFEC(), by calling the tuner behaviour methods –
+      setTunerFEC()
+  b. This should build the TunerPolarization(), by calling the tuner behaviour
+      methods – set TunerPolarization()
+  c. This should build the TunerModulationType(), by calling the tuner behaviour
+      methods – setTunerModulationType()
 3. Create a concrete builder class – tunerTerrestrialBuilder()
 4. Create a concrete builder class – tunerSatelliteBuilder()
 5. Create a director/Engineer class that will build the final product. This will
-hold the reference to the builder. With the aid of a builder reference, it will
-call the specific build. For example, build TunerFEC, build
-TunerPolarization(), and build setTunerModulationType().
+   hold the reference to the builder. With the aid of a builder reference, it will
+   call the specific build. For example, build TunerFEC, build
+   TunerPolarization(), and build setTunerModulationType().
 
 6. Finally, the director will return the final product.
 
 7. A client will create a builder type. For example, terrestrial type.
-Later, it will pass the terrestrial builder object to the director. The director
-will call the build operations of the terrestrial builder to create a final product.
-Interface or plan of the tuner object.
+  Later, it will pass the terrestrial builder object to the director. The director
+  will call the build operations of the terrestrial builder to create a final product.
+  Interface or plan of the tuner object.
 
 {% highlight ruby %}
 

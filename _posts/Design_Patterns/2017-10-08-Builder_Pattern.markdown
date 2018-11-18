@@ -293,7 +293,7 @@ int main(void)
 {% endhighlight %}
 
 **Difference between Builder and Factory Pattern.**
-
+<br>
 The factory pattern creates the product in one step. However, the builder
 pattern creates the product in multiple steps. The builder pattern uses
 composition internally. It is a combination of strategy/behavioural

@@ -29,15 +29,15 @@ other module/requirement comes, then there is no code change required.
 
 **Solution/Discussion:**
 These entities are totally disconnected. For example,
-Power Manager and Storage Manager has entirely different purpose. We
+Power Manager and Storage Manager have entirely different purpose. We
 don’t want sender to be coupled with the receiver. The sender can just
 dispatch the message/command to the pipeline and forget. The object that is
 connected to the pipeline will either process or delegate the command to the
 next object. In order to synthesis this kind of behavior, we need to implement
-Chain of Responsibility Principle.
+'Chain of Responsibility' principle.
 
 A ‘Chain of Responsibility’ principle implements a singly linked list. Here, all the objects are connected with each other. A message/command is dispatched to
-the head node of the Singly linked list. If the head node cannot handle the
+the head node of the singly linked list. If the head node cannot handle the
 command/message, then it will delegate to its next object . This way, the
 message/command is delegated from one node to another unless the
 message can be handled by the appropriate object.
@@ -55,9 +55,7 @@ Responsibility’ design pattern here?**
 STB system. We can always extend it.
 
 2. XMPP Stanza – This is the base class – head node for the chain of
-responsibility principle i.e. Singly linked list. A command/message will always be dispatched first to this Head node of the pipeline. If the message cannot be
-handled, then it will call it’s next object to handle it. This way, the message will be delegated to next object unless the message can be handled. This class
-should have a routine/method to build the singly linked list i.e next pointer.
+responsibility principle i.e. singly linked list. A command/message will always be dispatched first to this head node of the pipeline. If the message cannot be handled, then it will call it’s next object to handle it. This way, the message will be delegated to next object unless the message can be handled. This class should have a routine/method to build the singly linked list i.e next pointer.
 A client will dispatch the XMPP commands to this class object only. Also, it will
 register itself with this class. Internally, during registration, it will append the new object into its singly linked list. Also, this class will have a
 virtual method to handle the message. This class will just delegate the message to its next object .

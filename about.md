@@ -8,6 +8,8 @@ permalink: /about/
 
 [linkedin](https://www.linkedin.com/in/shreyas-joshi-20640b22/)
 
+[Networking Certification](https://www.youracclaim.com/badges/71113f38-defa-4c1e-a7bd-86241a4cbab6/public_url)
+
    **Papers Published**
 
 [Qt-Webkit - Mobile Apps](https://opensourceforu.com/2014/09/qt-webkit-a-quick-way-to-develop-a-destop-or-mobile-app/)

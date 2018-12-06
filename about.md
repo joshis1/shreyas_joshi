@@ -17,6 +17,7 @@ permalink: /about/
 [Jenkins](https://opensourceforu.com/2014/02/manage-routine-tasks-jenkins/)
 
   **Activities**
+
 [flickr](https://www.flickr.com/photos/101288163@N03/)
 
 <img src="/assets/img/About_Pic.jpg" alt="About Pic">

@@ -1,30 +1,31 @@
 ---
 layout: post
-title:  "Zedboard bringup using Yocto"
+title:  "Zedboard Linux bringup using Yocto"
 date:   2020-02-02 14:13:31 +1300
 categories: Embedded_Linux
 ---
 
-This article is all about building and generating the u-boot (SPL) image, kernel, device tree and root file system for the Avnet Zedboard.
-Also, I will touch on how to create the fpga bit stream to program the PL. I have no experience in fpga but I would like to touch the fpga bit stream topic for the sake of completeness. Basically, a fully functional system where we can do tweaks later on. This is all about setting up the foundation to load the operating environment in the Avnet microZed using sd card/mmc. The model name is  Z7MB-7z0x0-ASY.  
+This article is all about building and generating the u-boot (SPL) image, linux kernel, device tree and root file system for the Avnet Zedboard 7010.
+Also, I will touch on how to create the fpga bit stream to program the Programming logic(PL). I have no experience in fpga but I would like to touch the fpga bit stream topic for the sake of completeness. Basically, a fully functional system where we can do tweaks later on. This is all about setting up the foundation to load the operating environment on the Avnet microZed using sd card/mmc. The model name is  Z7MB-7z0x0-ASY.  
 
 <img src="/assets/img/AVNET_Zedboard.png" alt="MicroZed Zynq AVNET">
 
 **Motivation to do this?**
 
-I don't want to use Petalinux which abstracts a lot of details from the user. Instead, I would like to use Yocto. Here, in this blog, I am using warrior release of yocto.
+I don't want to use Petalinux which abstracts a lot of details from the user. Instead, I would like to use Yocto build system. 
+Here, in this blog, I am using warrior release of yocto.
 
 **Setup** - I am using Ubuntu 18.04 on Windows 10 host machine.
 I had a little bit of trouble finding what version of virtual box works with Ubuntu 18.04. I found that the version Virtual box 6.1.2 running guest OS - Ubuntu 18.04 works well on Windows 10 host machine.
-Here is the link - https://forums.virtualbox.org/viewtopic.php?f=6&t=97052  Make sure you install the guest additions too for 6.1.2. Before you run the Guest Addition program, ensure you have installed the build-essential linux-headers-generic. Also, you might have to install build-essential gcc make perl dkms. I have given 50Gb to make Ubuntu machine that should be sufficient to build the entire operating environment for microZed board.
+Here is the link - [virtualboxForum](https://forums.virtualbox.org/viewtopic.php?f=6&t=97052)  Make sure you install the guest additions too for 6.1.2. Before you run the Guest Addition program, ensure you have installed the build-essential linux-headers-generic. Also, you might have to install build-essential gcc make perl dkms. I have given 50Gb to create Ubuntu virtual machine that should be sufficient to build the entire operating environment for microZed board.
 
 **Pre-requisite**
 
 Install the essentials in order to use Yocto.
 
-https://www.yoctoproject.org/docs/1.8/yocto-project-qs/yocto-project-qs.html
+[Yocto](https://www.yoctoproject.org/docs/1.8/yocto-project-qs/yocto-project-qs.html)
 
-**Ubuntu and Debian¶**
+**Ubuntu and Debian**
 The essential and graphical support packages you need for a supported Ubuntu or Debian distribution are shown in the following command:
 
 {% highlight ruby %}
@@ -60,12 +61,12 @@ cd poky <Get inside the poky folder
 
 {% highlight ruby %}
 
-a) meta-openembedded  and what it provides - read README -  https://github.com/openembedded/meta-openembedded/blob/master/README
-b) meta-sourcery  and what it provides - read README - https://github.com/MentorEmbedded/meta-sourcery/blob/master/README.md
-c) u-boot-xlnx  and it provides u-boot - read README - https://github.com/Xilinx/u-boot-xlnx/blob/master/README
-d) meta-ezynq and it provides - read README - https://github.com/Elphel/meta-ezynq/blob/master/README.md
+a) meta-openembedded  and what it provides - read README -  [meta-openembedded](https://github.com/openembedded/meta-openembedded/blob/master/README)
+b) meta-sourcery  and what it provides - read README - [meta-sourcery](https://github.com/MentorEmbedded/meta-sourcery/blob/master/README.md)
+c) u-boot-xlnx  and it provides u-boot - read README - [u-boot-xlnx](https://github.com/Xilinx/u-boot-xlnx/blob/master/README)
+d) meta-ezynq and it provides - read README - [meta-ezynq](https://github.com/Elphel/meta-ezynq/blob/master/README.md)
 d) meta-external-toolchain and it is needed by meta-sourcery. 
-e) meta-xilinx and it provides the definition for the machine microzed-zynq7 - read README - https://github.com/Xilinx/meta-xilinx/blob/master/README.md
+e) meta-xilinx and it provides the definition for the machine microzed-zynq7 - read README - [meta-xilinx](https://github.com/Xilinx/meta-xilinx/blob/master/README.md)
 
 {% endhighlight %}
 
@@ -84,7 +85,8 @@ Inside the poky folder, checkout these layers.
 
 **Initialize the build**
 
-This will create a build directory and will cd into build. The build directory will have the template for local.conf and bblayers.conf.
+This source command will create a build directory and will cd into build directory. The build directory will have the template for local.conf and bblayers.conf.
+Here is the command.
 
 {% highlight ruby %}
 
@@ -93,7 +95,7 @@ b) source oe-init-build-env
 
 {% endhighlight %}
 
-Let's edit bblayers.conf to tell what layers we are using.
+Let's edit bblayers.conf to add layers to the recipe.
 
 {% highlight ruby %}
 
@@ -149,9 +151,9 @@ This is how it looks on the terminal.
 In order to build fpga bit stream, we will use Vivado. I have installed 
 Vivado on my Windows 10 machine. 
 
-By default, Vivado doesn't have board files for microzed zynq7 from AVNET. So, we need to download the board files of microzed zynq7. Here is the link to download the board files. If the link doesn't exist then you can also do a google search for microzed-zynq7 board files. 
+By default, Vivado doesn't have board files for microzed zynq 7010 from AVNET. So, we need to download the board files of microzed zynq7. Here is the link to download the board files. If the link doesn't exist then you can also do a google search for microzed-zynq7 board files. 
 
-http://zedboard.org/content/board-definition-files-0
+[zynq-microzed-7010x-board-definition](http://zedboard.org/content/board-definition-files-0)
 
 Copy the board definition files at the location - 
 
@@ -159,34 +161,34 @@ Copy the board definition files at the location -
 C:\Xilinx\Vivado\2018.1\data\boards\board_files
 {% endhighlight %}
 
-or if you are not Windows OS user, then you can use this link for reference https://www.youtube.com/watch?v=n7A0_twGPlI
+or if you are not a regular Windows OS user, then you can use this link for reference [Vivado_Board_File_Installation](https://www.youtube.com/watch?v=n7A0_twGPlI)
 
 Now, you should be able to select the board for Zynq-7010x.
 I have followed this tutorial to generate the bitstream 
 
-http://www.fpgadeveloper.com/2014/07/creating-a-base-system-for-the-zynq-in-vivado.html
+[creating basic fpga program](http://www.fpgadeveloper.com/2014/07/creating-a-base-system-for-the-zynq-in-vivado.html)
 
 Here is my fpga project. 
 
-https://github.com/joshis1/avnet_microzed_fpga.git
+[My FPGA project](https://github.com/joshis1/avnet_microzed_fpga.git)
 
 Once you run it, Vivado generates the bit file in runs\impl_1 folder in the project directory.
 
-**Preparing hardware system**
+**Prepare hardware system**
 
 {% highlight ruby %}
 
 1) Setup the Jumper settings accurately to do sdboot 
 
-Follow this - http://zedboard.org/sites/default/files/documentations/MicroZed_GettingStarted_v1_0.pdf 
+Follow this - [AVNET Getting Started](http://zedboard.org/sites/default/files/documentations/MicroZed_GettingStarted_v1_0.pdf )
 
 see Page 11.
 
-2) Preparing sd card.
+2) Prepare sd card.
 
 a) Partition the sd card into two partition.
 
-i) FAT 32 - maximum 800 MB is good.
+i) FAT 32 - maximum 800 MB is good enough.
 ii) EXT4 -  Rest of the sd card space.
 
 {% endhighlight %}
@@ -196,7 +198,7 @@ I use gpart application to do the partitiion. You need to enable USB in the virt
 Now copy, boot.bin, devicetree.dtb, u-boot.img uEnv.txt and uImage in the FAT partitiion. Also, if you have created the fpga bit stream then you could copy the fpga bit stream here.
 
 boot.bin is the SPL image and it will look for u-boot.img. 
-u-boot.img will look for devicetree.dtb to set parameters for the kernel. For e.g, what clock rate, i2c devices the board needs is all defined in the devicetree. uImage i.e Kernel will refer the device tree in order to configure and probe the required drivers. When the kernel start, it reads this file (called dtb for Device Tree Binary) to know the devices on the board, and initialize useful drivers.
+u-boot.img will look for devicetree.dtb to set parameters for the kernel. For e.g, what clock rate, i2c devices the board needs is all defined in the devicetree. uImage i.e Kernel will refer to the device tree in order to configure and probe the required drivers. When the kernel starts, it reads this file (called dtb for Device Tree Binary) to know the devices on the board, and initialize useful drivers.
 
 **Copy Root File System**
 
@@ -211,7 +213,7 @@ tar -C <mountpoint> -xzpf rootfs.tar.gz
 
 **Poking with u-boot environment.**
 
-By default, my system had the following.
+By default, my system had the following sdboot value.
 
 {% highlight ruby %}
 
@@ -240,7 +242,7 @@ setenv sdboot 'echo Copying Linux from SD to RAM...  && mmcinfo && run mmc_loadb
 
 **Loading the fpga bit stream**
 
-I have given name of my the fpga bit stream as custom_ip.bit
+I have given a name to the fpga bit stream as custom_ip.bit here.
 {% highlight ruby %}
 fatload mmc 0 ${loadbit_addr} custom_ip.bit
 fpga loadb 0 ${loadbit_addr} $filesize
@@ -251,14 +253,14 @@ fpga loadb 0 ${loadbit_addr} $filesize
 setenv mmc_loadbit_fat 'echo Loading bitstream from SD/MMC/eMMC to RAM.. && mmcinfo && fatload mmc 0 ${loadbit_addr} ${bitstream_image} && fpga loadb 0 ${loadbit_addr} ${filesize}'
 {% endhighlight %}
 
-Please not that I am using fpga loadb in order to load the bitstream.
-There is no conversion required in order to load the fpga bitstream generated from Vivado.
+Please note that I am using fpga loadb in order to load the bitstream.
+There is no translation required in order to load the fpga bitstream generated from Vivado.
 
 **EXT4 Root File System**
 
 **Telling uboot to mount the rootfile system from where?**
 
-This is to identify from where uboot should mount the root file system.
+This is to identify from where kernel should mount the root file system.
 
 In my case, I did the following in my u-boot.
 
@@ -278,7 +280,8 @@ Part    Start Sector    Num Sectors     UUID            Type
 Now, this tells me that my ext4-root file system is at mmcblk0p1
 mmcblk 0 is the first sd card and p1 is the second block.
 
-Now, set the u-boot boot args.
+Now, set the u-boot environment variable bootargs, which eventually is passed to the kernel.
+Kernel uses this environment variable to set the console, root file system and other parameters.
 
 {% highlight ruby %}
 set bootargs earlyprintk console=ttyPS0,115200 root=/dev/mmcblk0p1 rw rootwait devtmpfs.mount=1
@@ -367,7 +370,7 @@ stdout=serial@e0001000
 
 <img src="/assets/img/uboot_putty.png" alt="Uboot - SPL">
 
-U-Boot runs code placed in (processor's) RAM,  Although it can also read data from other media. The boot process normally takes place in two steps:
+U-Boot runs code placed in (processor's) RAM,  although it can also read data from other media. The boot process normally takes place in two steps:
 
 {% highlight ruby %}
 

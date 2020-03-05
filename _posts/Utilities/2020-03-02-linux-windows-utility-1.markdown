@@ -44,6 +44,7 @@ $rm -r -i AB*20191217-163059*
 {% endhighlight %}
 
 **What is -exec keyword in linux command?**
+
 -exec is an option specific to 'find' command. This is used to run other commands on the results returned from the 'find' command. So, exec doesn't exist by its own, it can be combined only with find command.
 
 **Example**
@@ -77,7 +78,9 @@ The above will display password.txt and then it will display password_enc.txt.
 In our case, we don't want to use ';' by shell but to pass this to exec. So that's why we are using escape character '\'.
 
 **What is the utility in Windows to run DHCP Server for tftp purpose?**
+
 Here is the utility that I use in Windows10 to run my DHCP server.
+
 [dhcp server](https://www.dhcpserver.de/cms/)
 
 This brings an end to this article. This article was just to touch some

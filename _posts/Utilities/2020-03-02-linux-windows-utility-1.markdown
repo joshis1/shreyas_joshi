@@ -45,7 +45,7 @@ $rm -r -i AB*20191217-163059*
 
 **What is -exec keyword in linux command?**
 
--exec is an option specific to 'find' command. This is used to run other commands on the results returned from the 'find' command. So, exec doesn't exist by its own, it can be combined only with find command.
+'-exec' is an option specific to 'find' command. This is used to run other commands on the results returned from the 'find' command. So, exec doesn't exist by its own, it can be combined only with find command.
 
 **Example**
 

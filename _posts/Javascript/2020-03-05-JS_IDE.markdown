@@ -40,7 +40,6 @@ Here is the screen shot
 
 <img src="/assets/img/JS_ES6_Install.png" alt="Javascript ES6 Installation">
 
-
 **Auto Close tag**
 
 This will help to automatically close the tag.
@@ -83,4 +82,11 @@ Also, you could use the run and debug button to run the code.
 
 <img src="/assets/img/VSCode_Run_Debug.png" alt="VS Code run and debug">
 
-I have run all my examples on ubuntu 18.04.
+I use vscode on ubuntu 18.04.
+
+Another great resource for javascript programming is the online IDE.
+This is my favourite IDE.
+
+[codepen](https://codepen.io/pen/)
+
+This brings an end to this article. Happy programming.

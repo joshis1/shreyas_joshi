@@ -41,7 +41,8 @@ Go to the following file.
 $sudo gedit /etc/default/nfs-kernel-server 
 {% endhighlight %}
 
-Now, edit this file to include the version 2.
+Now, edit this file to include the version 2. First, find the line saying - "RPCNFSDCOUNT=8".
+Change this to include Version 2 also. Update/edit as follows to enable NFSv2 on Ubuntu Linux.
 
 {% highlight ruby %}
 # Number of servers to start up
@@ -71,6 +72,19 @@ NEED_SVCGSSD=""
 # Options for rpc.svcgssd.
 RPCSVCGSSDOPTS=""
 {% endhighlight %}
+
+Now, restart the NFS Kernel service.
+{% highlight ruby %}
+$sudo systemctl restart nfs-kernel-server.service
+{% endhighlight %}
+
+***Check the nfsd version afterwards**
+{% highlight ruby %}
+cat /proc/fs/nfsd/versions
++2 +3 +4 +4.1 +4.2
+{% endhighlight %}
+
++2 means it is enabled. 
 
 **How to check the NFS Server status**
 Ubuntu 18.04 uses Systemd to manage services.
@@ -180,6 +194,7 @@ Here is the core-image-minimal-microzed-zynq tar rootfs tar file for you to down
 **Troubleshooting NFS in general**
 
 Ensure that the embedded zynq kernel has the following configuration turned on.
+
 {% highlight ruby %}
 CONFIG_ROOT_NFS=y
 CONFIG_NFS_FS=y
@@ -204,6 +219,12 @@ $sudo apt-get install ncurses-devel
 Now, check the NFS configuration in the kernel, in the menuconfig do the following.
 Escape and forward slash i.e. '/' and type NFS in the search configuration parameter window.
 You should check for NFS_COMMON , NFS_FS, NFS_V2, ROOTFS_NFS. They all should be set to 'y'.
+
+After changing the menuconfig, you might need to recompile the kernel. In Yocto, we do this using the following command.
+{% highlight ruby %}
+$bitbake virtual/kernel -c cleansstate
+$bitbake virtual/kernel -c compile -f
+{% endhighlight %}
 
 Also, if it is still not working then it worth to check using wireshark and check for NFS protocol. Here is the screen shot of wireshark. You should see something like this. Here 11.11.11.19 is the server ip address and 11.11.11.18 is the NFS client i.e. zynq zedboard.
 

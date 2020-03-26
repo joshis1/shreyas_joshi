@@ -89,4 +89,13 @@ This is my favourite IDE.
 
 [codepen](https://codepen.io/pen/)
 
+**Resources to learn javascript**
+Check the website freecodecamp.org, and go to Javascript algorithms, basic data structures. You could try out
+basic algorithm solving. 
+
+**Documentation for javascript**
+1) MDN - Mozilla development network
+2) Javascript reference - developer's guide.
+3) devdocs.io
+
 This brings an end to this article. Happy programming.

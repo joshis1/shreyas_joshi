@@ -424,7 +424,7 @@ I strongly suggest to use SPL image rather than FSBL since if you get
 stuck with something then you have no support but to use peta-linux
 only.
 
-Here is the link to download the [ZedboardImage](https://drive.google.com/open?id=1B83ZjHktZ-lf_hVFON2biur_Q4LkQBMJ).
+Here is the link to download the [ZedboardImage](https://drive.google.com/open?id=10LsddxTvGmLnEsdgI-SYKYGNvOzIK-zc).
 
 
 This brings an end to this article. Here is the entire embedded system running.

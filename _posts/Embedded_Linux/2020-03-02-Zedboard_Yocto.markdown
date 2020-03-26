@@ -426,6 +426,14 @@ only.
 
 Here is the link to download the [ZedboardImage](https://drive.google.com/open?id=10LsddxTvGmLnEsdgI-SYKYGNvOzIK-zc).
 
+Here are the jumper settings to change the boot mode to JTAG, QSPI or SD Card.
+
+<img src="/assets/img/ZEDBOARD_JUMPER_SETTINGS.png" alt="Zedboard Jumper Settings">
+
+Also, you can read the entire guide on setting.
+
+[Zedboard reference guide](https://drive.google.com/open?id=1UcFAOTKosQ9m8bufOg3s5oGMPxCNyaVF)
+
 
 This brings an end to this article. Here is the entire embedded system running.
 

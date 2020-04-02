@@ -51,5 +51,11 @@ data i.e host machine data to big endian. If your machine/host is already big en
 The htonl is basically host to network unsigned long byte used for IPv4 address. 
 The htons is basically host to network unsigned short byte used for TCP/UDP port number.
 
+**What is a chunk in computer science?**
+
+A chunk is a little information from a big information.
+Imagine a gif image, a chunk will be a section of information like header 
+and you read chunk by chunk. In between the chunk the data lives.
+
 This brings an end to this article. 
 

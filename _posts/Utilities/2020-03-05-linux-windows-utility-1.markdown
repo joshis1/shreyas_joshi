@@ -83,5 +83,28 @@ Here is the utility that I use in Windows10 to run my DHCP server.
 
 [dhcp server](https://www.dhcpserver.de/cms/)
 
+**What is the utility to see what IP addresses have been assigned by the DHCP Server**
+
+This utility nmap is very powerful and can be useful even to know what are the different IP addresses  that 
+are active. 
+
+{% highlight ruby %}
+
+$sudo nmap -sP 11.11.11.1-254
+
+Starting Nmap 7.40 ( https://nmap.org ) at 2020-03-29 22:59 PDT
+Nmap scan report for 11.11.11.1
+Host is up (-0.099s latency).
+MAC Address: 00:1B:21:A7:62:44 (Intel Corporate)
+Nmap scan report for 11.11.11.4
+Host is up (0.00069s latency).
+MAC Address: 78:45:01:05:98:40 (Unknown)
+Nmap scan report for 11.11.11.3
+Host is up.
+Nmap done: 254 IP addresses (3 hosts up) scanned in 15.42 seconds 
+{% endhighlight %}
+
+
+
 This brings an end to this article. This article was just to touch some
 common commands and utilities to address common problems or tasks.

@@ -104,7 +104,14 @@ Host is up.
 Nmap done: 254 IP addresses (3 hosts up) scanned in 15.42 seconds 
 {% endhighlight %}
 
+**How to grep for a text in the current directory but skip looking inside the directory**
+Here -d skip means skip looking into the directory.
+Next -H means print the file names.
+Generally, the '-d skip' is used with the find and exec.
 
+{% highlight ruby %}
+find ./ -exec grep -d skip -H 'asf' {} \;
+{% endhighlight %}
 
 This brings an end to this article. This article was just to touch some
 common commands and utilities to address common problems or tasks.

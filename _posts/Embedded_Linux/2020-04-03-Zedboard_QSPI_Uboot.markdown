@@ -188,7 +188,7 @@ Zynq> md 0x8C00000
 {% endhighlight %}
 
 **Boot kernel image**
-The command here is bootm <uImage address>  <rootfs address if you have otherwise put ->  <device tree address>
+The command here is bootm uImage address  rootfs address if you have otherwise put ->  device tree address
 In my case, I don't have rootfs address. Thus, I am putting '-'.
 
 {% highlight ruby %}

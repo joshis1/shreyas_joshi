@@ -143,7 +143,13 @@ what is amba? After a lot of search, I found that the problem is that before eve
 didn't have symbols. The DTBO relies on symbol since symbol wasn't there the DTBO failed. So, the root cause was the
 DTB file and not DTBO. The solution here is to build the device tree with '-@' DTC flag so that it generates the symbol. Once symbol are there, DTBO won't compile.
 
+Here is the device tree without symbol.
+
 <img src="/assets/img/NO_SYMBOL_DTC.png" alt="No Symbol Device Tree">
+
+After the fix, you can see that the device tree has got the symbols.
+
+<img src="/assets/img/SYMBOL_DTC.png" alt="Symbol Device Tree">
  
 **Reverse Engineering to know from where it is reading DTS file to create devicetree.dtb file**
 {% highlight ruby %}

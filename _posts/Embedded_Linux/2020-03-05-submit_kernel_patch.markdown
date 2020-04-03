@@ -212,4 +212,8 @@ Here is the output and you can see that I am onto the warrior branch.
 
 <img src="/assets/img/git_warrior_branch.png" alt="git branch on the shell">
 
+Useful links
+
+[kernel patches](https://lore.kernel.org/patchwork/project/lkml/list/)
+
 This brings an end to this article. It's a good idea to give back to the open source community like linux kernel.

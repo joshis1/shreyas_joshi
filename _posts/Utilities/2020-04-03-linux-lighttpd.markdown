@@ -5,7 +5,8 @@ date:   2020-04-03 14:23:31 +1300
 categories: Utilities
 ---
 
-This article is all about installing and running lighttpd.
+This article is all about installing and running lighttpd. We will configure lighttpd to 
+support python CGI.
 
 The lighttpd is nothing but a light weight web server.
 It has a low memory foot print and it is quite useful in embedded systems.

@@ -80,7 +80,8 @@ Now, flash the QSPI NOR
 Probe the SPI Nor.
 
 {% highlight ruby %}
-sf probe 0 0 0
+Zynq>  sf probe 0 0 0
+SF: Detected s25fl128s_64k with page size 256 Bytes, erase size 64 KiB, total 16 MiB
 {% endhighlight %}
 
 We cannot directly onto QSPI Nor flash, first we need to erase the block and then only we can write the
@@ -193,6 +194,14 @@ In my case, I don't have rootfs address. Thus, I am putting '-'.
 
 {% highlight ruby %}
 bootm 0x8000000 - 0x8C00000
+{% endhighlight %}
+
+**How to run elf image using uboot**
+Similar to bootm, you can use bootelf to run an elf executable.
+Suppose an elf is stored at the memory address 0x1000000.
+
+{% highlight ruby %}
+ bootelf 0x1000000
 {% endhighlight %}
 
 This brings an end to this article.

@@ -153,6 +153,10 @@ Vivado on my Windows 10 machine.
 
 By default, Vivado doesn't have board files for microzed zynq 7010 from AVNET. So, we need to download the board files of microzed zynq7. Here is the link to download the board files. If the link doesn't exist then you can also do a google search for microzed-zynq7 board files. 
 
+Some people use Xilinx Vitis IDE to generate FPGA program. The most popular language for 
+FPGA is VHDL. [Vitis](https://www.xilinx.com/products/design-tools/vitis.html)
+
+
 [zynq-microzed-7010x-board-definition](http://zedboard.org/content/board-definition-files-0)
 
 Copy the board definition files at the location - 

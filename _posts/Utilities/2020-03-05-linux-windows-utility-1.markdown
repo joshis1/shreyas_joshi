@@ -113,5 +113,13 @@ Generally, the '-d skip' is used with the find and exec.
 find ./ -exec grep -d skip -H 'asf' {} \;
 {% endhighlight %}
 
+**How to increase the size of your virtual machine box?**
+Many times, you will realise that your virtual machine box needs more space then you have allocated previously.
+I faced this issue while using yocto in my virtual machine running Ubuntu. Here is what I referred to increase
+the size of my virtual machine box - 
+
+[Enlarge Virtual Machine disk space](https://drive.google.com/open?id=1ZLMDLuKJZ9nKfB_6DXYVlBid0gCLYsS9)
+
+
 This brings an end to this article. This article was just to touch some
 common commands and utilities to address common problems or tasks.

@@ -202,7 +202,11 @@ I use gpart application to do the partitiion. You need to enable USB in the virt
 Now copy, boot.bin, devicetree.dtb, u-boot.img uEnv.txt and uImage in the FAT partitiion. Also, if you have created the fpga bit stream then you could copy the fpga bit stream here.
 
 boot.bin is the SPL image and it will look for u-boot.img. 
-u-boot.img will look for devicetree.dtb to set parameters for the kernel. For e.g, what clock rate, i2c devices the board needs is all defined in the devicetree. uImage i.e Kernel will refer to the device tree in order to configure and probe the required drivers. When the kernel starts, it reads this file (called dtb for Device Tree Binary) to know the devices on the board, and initialize useful drivers.
+u-boot.img will look for devicetree.dtb to set parameters for the kernel. For e.g, what clock rate, i2c devices the board needs is all defined in the devicetree. uImage i.e Kernel will refer to the device tree in order to configure and probe the required drivers. When the kernel starts, it reads this file (called dtb for Device Tree Binary) to know the devices on the board, and initialize useful drivers. Basically, SPL image uses PS7 i.e. processor system 
+ps7_init.c and ps7_init.h from the xilinix board. In case you are not using microzed zynq, then you might need to 
+generate ps7_init.c and ps7_init.h using xilinix tool. Next, you need to copy these files to uboot-xilinx.
+The PS7_init.c does a lot of things like - resetting the SLCR - System level control registers and rom boot loader.
+It starts by resetting the processor. 
 
 **Copy Root File System**
 

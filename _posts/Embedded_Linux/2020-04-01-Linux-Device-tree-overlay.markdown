@@ -257,6 +257,14 @@ $make prepare
 
 {% endhighlight %}
 
+**PLL - Phase locked loop**
+This is a part of processor, the PLL lives inside the processor. The PLL job is to give clocks to different
+peripherals. Also, PLL can divide or multiply the clock to give different clock rates to a different peripherals 
+attached. For e.g. UART baud rate will differ based on the clock rate being given by the PLL. In short, processor
+gets the clock from oscillator, external or something else. Next, the PLL lives inside the processor. The PLL job
+is to give different clock rates to different peripherals. The PLL can be configured to give a different clock
+rate to a particular peripheral. PLL stands for phase locked loop. It is a controlled circuit.
+
 
 [Zedboard reference guide](https://drive.google.com/open?id=1UcFAOTKosQ9m8bufOg3s5oGMPxCNyaVF)
 

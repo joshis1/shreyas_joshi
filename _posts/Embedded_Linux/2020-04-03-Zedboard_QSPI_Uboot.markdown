@@ -195,4 +195,4 @@ In my case, I don't have rootfs address. Thus, I am putting '-'.
 bootm 0x8000000 - 0x8C00000
 {% endhighlight %}
 
-This brings an end to this article. Here is the entire embedded system running.
+This brings an end to this article.

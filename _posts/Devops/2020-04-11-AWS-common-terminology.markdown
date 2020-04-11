@@ -115,12 +115,12 @@ Example of asymemtric encryption using gpg.
 
 **General architecture concepts**
 
-1. Cost efficient or Cost effective architecture - 
+1. Cost efficient or Cost effective architecture 
 
 Implement a solution within AWS using products or products features
 that provide the required service for as little initial and ongoing 
 cost as possible. This is about using your funds effectively and knowing
-if product x is better or worse than product y for a given solution.
+if product x is better or worse than product y for a given solution.  
 
 2. Secure
 
@@ -132,11 +132,11 @@ external attack.
 doing, what they have chosen or what they have configured. Examples 
 include items and quantities in a shopping cart. A session state can be
 stored on a server called stateful server. If the session state is stored
-externally then it called a stateless server.
+externally then it called a stateless server.  
 
 4. Undifferentiated heavy lifting - A part of an application, system
 or platform that is not specific to your business. Allowing a vendor
 AWS  to handle this part frees your staff to work on adding direct
-value to your customers. Thus, we offload a day to day IT job to AWS.
+value to your customers. Thus, we offload a day to day IT job to AWS.  
 
 This brings an end to this article.

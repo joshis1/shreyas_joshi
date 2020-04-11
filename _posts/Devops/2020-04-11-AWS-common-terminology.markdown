@@ -115,14 +115,14 @@ Example of asymemtric encryption using gpg.
 
 **General architecture concepts**
 
-1. Cost efficient or Cost effective architecture - Implement a solution within AWS using products or products features
-that provide the required service for as little initial and ongoing 
+1. Cost efficient or Cost effective architecture - Implement a solution within AWS using products 
+or products features that provide the required service for as little initial and ongoing 
 cost as possible. This is about using your funds effectively and knowing
 if product x is better or worse than product y for a given solution.  
 
 2. Secure - In a systems architecture context, implementing a given solution that
 secures data and operations as much as possible from an internal or 
-external attack.
+external attack.  
 
 3. Application session state - Data that represents what a customer is 
 doing, what they have chosen or what they have configured. Examples 

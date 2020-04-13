@@ -77,10 +77,12 @@ It is a set of instructions which are used to construct a docker image.
 These instructions are called directives.
 
 **Common Directives**  
-1) FROM - it starts a new build stage and sets the base image. It is usually must be the first directives in the Dockerfile(except ARG can be placed before FROM)
-2) ENV - sets environment variables. These can be referenced in the Dockerfile itself and are visible to the container at run time.
-3) RUN - it creates a new layer on top of the previous layer by running a command inside that new layer and committing the changes.
-4) CMD - specifically a default command used to run a container at execution time.
+{% highlight ruby %}
+1) FROM - it starts a new build stage and sets the base image. It is usually must be the first directives in the Dockerfile(except ARG can be placed before FROM)  
+2) ENV - sets environment variables. These can be referenced in the Dockerfile itself and are visible to the container at run time.  
+3) RUN - it creates a new layer on top of the previous layer by running a command inside that new layer and committing the changes.  
+4) CMD - specifically a default command used to run a container at execution time. 
+{% endhighlight %} 
 
 Now, create a docker file.
 

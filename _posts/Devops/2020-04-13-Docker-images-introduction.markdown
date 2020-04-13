@@ -109,6 +109,7 @@ curl localhost:8080
 
 **More directives**  
 Dockerfiles offer many different directives which we can use to build and customize our images.
+
 {% highlight ruby %}
 1) EXPOSE - documents which port(s) are intended to published when running a container.  
 
@@ -121,7 +122,7 @@ ADD, COPY, CMD, ENTRYPOINT, etc. We can use relative path here too.
 
 5) STOPSIGNAL - specify the signal that will be used to stop the container.  
 
-6) HEALTHCHECK - specify a command to run in order to perform a custom health check to verify that the container is working properly.
+6) HEALTHCHECK - specify a command to run in order to perform a custom health check to verify that the container is working properly.  
 
 {% endhighlight %}
 

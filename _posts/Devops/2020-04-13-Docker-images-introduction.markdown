@@ -7,7 +7,8 @@ categories: Devops
 This article is all about docker images. In this tutorial, we will learn on how to create a custom
 docker image. This is just an introduction and doesn't cover the topic extensively.
 
-**What is a docker image**
+**What is a docker image**  
+
 Images are a key component when using docker. They provide the components and software necessary to run containers. They are built using a layered file system.
 In short, it is a file containing the code and components needed to run software in a container. Docker containers and images use a layered file system. Each layer contains only the difference from the previous layer.
 
@@ -22,10 +23,10 @@ Example, the following will down an image from docker hub.
 Containers and images use a layered file system. Each layer contains only the 
 difference from the previous layer.
 
-**Structure of image**
+**Structure of image**  
 An image consists of one or more read only layers.
 
-**Strucutre of container**
+**Strucutre of container**  
 A container has one or more read only layers but in addition to it, it has a 
 writeable layer. 
 
@@ -39,7 +40,7 @@ Example
 
 reference - (https://docs.docker.com/v17.09/engine/userguide/storagedriver/imagesandcontainers/)
 
-**Advantages of layered file system**
+**Advantages of layered file system**  
 The layered file system allows multiple images and containers to share the same layer. Also, the image build time is reduced since we need to build the layers that have been changed in docker. This result in - 
 
 {% highlight ruby %}
@@ -50,15 +51,15 @@ The layered file system allows multiple images and containers to share the same 
 
 For e.g. if you run five instances of container then each container share all the layers except writable container layer.  
 
-**How to find what layers an image comprises of?**
+**How to find what layers an image comprises of?**  
 {% highlight ruby %}
  $docker image history <image name>
 {% endhighlight %}
 
 This will list the layers used to build an image.
 
-**Components of a Dockerfile**
-**How to build your own docker image?**
+**Components of a Dockerfile**  
+**How to build your own docker image?**  
 Docker hub provides a wide variety of useful public images. However, anyone 
 running their own software using Docker needs to know how to create image themselves. The most common Dockerfile directives we should know. 
 
@@ -71,11 +72,11 @@ reference - (https://docs.docker.com/engine/reference/builder/)
    Hello, World!
 {% endhighlight %}
 
-**What are directives in docker?**
+**What are directives in docker?**  
 It is a set of instructions which are used to construct a docker image.
 These instructions are called directives.
 
-**Common Directives**
+**Common Directives**  
 1) FROM - it starts a new build stage and sets the base image. It is usually must be the first directives in the Dockerfile(except ARG can be placed before FROM)
 2) ENV - sets environment variables. These can be referenced in the Dockerfile itself and are visible to the container at run time.
 3) RUN - it creates a new layer on top of the previous layer by running a command inside that new layer and committing the changes.
@@ -93,7 +94,7 @@ RUN apt-get update && apt-get install -y nginx=$NGINX_VERSION
 CMD ["nginx", "-g", "daemon off;"]
 {% endhighlight %}
 
-**Build and test the image**
+**Build and test the image**  
 In order to build and test the image, we need to run the following.
 {% highlight ruby %}
  $docker build -t custom-nginx .
@@ -101,7 +102,7 @@ In order to build and test the image, we need to run the following.
 curl localhost:8080
 {% endhighlight %}
 
-**More directives**
+**More directives**  
 Dockerfiles offer many different directives which we can use to build and customize our images.
 
 1) EXPOSE - documents which port(s) are intended to published when running a container.

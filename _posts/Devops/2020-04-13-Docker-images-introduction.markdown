@@ -78,9 +78,12 @@ These instructions are called directives.
 
 **Common Directives**  
 {% highlight ruby %}
-1) FROM - it starts a new build stage and sets the base image. It is usually must be the first directives in the Dockerfile(except ARG can be placed before FROM)  
+1) FROM - it starts a new build stage and sets the base image. It is usually must be the first directives in the Dockerfile(except ARG can be placed before FROM)
+ 
 2) ENV - sets environment variables. These can be referenced in the Dockerfile itself and are visible to the container at run time.  
+
 3) RUN - it creates a new layer on top of the previous layer by running a command inside that new layer and committing the changes.  
+
 4) CMD - specifically a default command used to run a container at execution time. 
 {% endhighlight %} 
 
@@ -106,14 +109,21 @@ curl localhost:8080
 
 **More directives**  
 Dockerfiles offer many different directives which we can use to build and customize our images.
+{% highlight ruby %}
+1) EXPOSE - documents which port(s) are intended to published when running a container.  
 
-1) EXPOSE - documents which port(s) are intended to published when running a container.
 2) WORKDIR - sets the current working directory for subsequent directives such as 
-ADD, COPY, CMD, ENTRYPOINT, etc. We can use relative path here too.
-3) COPY - copy files from the local machine to the image.
-4) ADD - it is similar to COPY, but can also pull files using a URL and extract an archive into loose files in the image.
-5) STOPSIGNAL - specify the signal that will be used to stop the container.
+ADD, COPY, CMD, ENTRYPOINT, etc. We can use relative path here too.  
+
+3) COPY - copy files from the local machine to the image.  
+
+4) ADD - it is similar to COPY, but can also pull files using a URL and extract an archive into loose files in the image.  
+
+5) STOPSIGNAL - specify the signal that will be used to stop the container.  
+
 6) HEALTHCHECK - specify a command to run in order to perform a custom health check to verify that the container is working properly.
+
+{% endhighlight %}
 
 Here is an example.
 {% highlight ruby %}

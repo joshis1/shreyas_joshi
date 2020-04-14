@@ -18,7 +18,7 @@ There are five pillars of well architected framework.
 
 reference - [AWS-Well-Architected](https://d1.awsstatic.com/whitepapers/architecture/AWS_Well-Architected_Framework.pdf)
 
-**Security - Design Principles**
+**Security - Design Principles**  
 Security pillar includes the ability to protect information, systems, and assets while delivering business value through risk assessement and mitigation
 stratgies. 
 
@@ -31,7 +31,7 @@ stratgies.
 6. Prepare for security events.
 {% endhighlight %}
 
-**Reliability - Design Principles**
+**Reliability - Design Principles**  
 Reliability pillar includes the ability of a system to recover from infrastructure or service disruptions, dynamically acquire computing resources to meet demand, and mitigate disruptions, such as misconfigurations or transient network issues.
 
 {% highlight ruby %}
@@ -42,7 +42,7 @@ Reliability pillar includes the ability of a system to recover from infrastructu
 5. manage change in automation
 {% endhighlight %}
 
-**Performance Efficiency - Design Principles**
+**Performance Efficiency - Design Principles**  
 Performance efficiency pillar includes the ability to use
 computing resources efficiently to meet system requirements and to maintain that efficiency as demand changes and technology evolve.
 {% highlight ruby %}
@@ -53,7 +53,7 @@ computing resources efficiently to meet system requirements and to maintain that
 5. mechanical sympathy
 {% endhighlight %}
 
-**Operational Excellence - Design Principles**
+**Operational Excellence - Design Principles**  
 The operational excellence pillar includes the ability to run and monitor systems to deliver business value and to continually improve supporting processes and procedures.
 {% highlight ruby %}
 1. Perform operations as code
@@ -64,7 +64,7 @@ The operational excellence pillar includes the ability to run and monitor system
 6. Learn from all operational features.
 {% endhighlight %}
 
-**Cost optimization - Design Principles**
+**Cost optimization - Design Principles**  
 The cost optimization pillar includes the ability to avoid
 or eliminate uneeded cost or sub optional resources.
 {% highlight ruby %}
@@ -75,7 +75,7 @@ or eliminate uneeded cost or sub optional resources.
 5. Use managed services to reduce cost of ownership.
 {% endhighlight %}
 
-**Elasticity**
+**Elasticity**  
 It is also known as automated horizontal scaling. The elastic scaling is where automation and horizontal scaling are used in conjunction to match capacity with demand. Demand is rarely so linear - it can increase or decrease often in a rapid and sudden way. An efficient platform should scale OUT and IN matching demands on that system. It allows performance efficiency and cost optimization.
 
 This brings an end to this article.

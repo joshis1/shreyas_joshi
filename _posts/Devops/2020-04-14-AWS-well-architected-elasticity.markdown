@@ -4,7 +4,7 @@ title:  "AWS-well-architected-elasticity"
 date:   2020-04-14 14:25:31 +1000
 categories: Devops
 ---
-This article is all about AWS Well architected framework and general concept about elasticity.
+This article is all about AWS well architected framework and general concept about elasticity.
 
 There are five pillars of well architected framework.
 

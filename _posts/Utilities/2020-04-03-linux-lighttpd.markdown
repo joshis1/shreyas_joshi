@@ -30,79 +30,104 @@ Afterwards, install the lighttpd again.
 sudo apt-get install lighttpd
 {% endhighlight %}
 
-Now, configure the root folder for lighttpd.
+Now, if you go your server ip then you will see the welcome page as shown below.
 
-By default, the root folder is /var/www.
-But, we will change the root folder here.
+<img src="/assets/img/lighttpd_welcome_page.png" alt="lighttpd_welcome_page">
+
+**Enabling Python CGI in lighttpd**  
+Firstly, go to the lighttpd.conf file.
 
 {% highlight ruby %}
-#mkdir /home/httpd
-#cp -Rv /var/www/* /home/httpd
-#chown -R www-data /home/httpd
-#chgrp -R www-data /home/httpd
+#vim /etc/lighttpd/lighttpd.conf
 {% endhighlight %}
 
-Let's change the configuration now in lighttpd.conf
-
+Change the server docroot from 
 {% highlight ruby %}
-#vi /etc/lighttpd/lighttpd.conf
-server.document-root  "/home/httpd"
-{% endhighlight %}
+ server.document-root        = "/var/www/html"
 
-Enable, CGI in lighttpd.
+ to
 
-{% highlight ruby %}
-
-vi /etc/lighttpd/lighttpd.conf
-
-#server.modules = (
-    "mod_access",
-    "mod_alias",
-    "mod_compress",
-    "mod_redirect",
-    "mod_cgi",
-    "mod_rewrite",
-)
+ server.document-root        = "/var/www/"
 
 {% endhighlight %}
 
-In order to get lighttd to recognize any python scripts we need to add
-the following new section at the end of the file.
+This way the cgi-bin can live inside /var/www/ folder.
 
+Secondly, create the cgi-bin directory with root user-id and group.
 {% highlight ruby %}
-$HTTP["url"] =~ "^/cgi-bin/" {
-  cgi.assign = (".py" => "/usr/bin/python")
-}
+ #mkdir -p /var/www/cgi-bin/
 {% endhighlight %}
 
-Give appropriate permission to the root folder.
+**CGI program - python script**
+Now, create your python script inside /var/www/cgi-bin/serverTime.py
 
 {% highlight ruby %}
-# chown www-data /home/httpd/cgi-bin
-# chgrp www-data /home/httpd/cgi-bin
-{% endhighlight %}
-
-Now, write the hello.py
-
-{% highlight ruby %}
-
-vi /home/httpd/cgi-bin/hello.py
-
 #! /usr/bin/python
 #
+import datetime
+
 print "Content-Type: text/html\n\n"
 print '<html> <head> <meta-content="text/html; charset=UTF-8"/>'
-print '<title> Raspberry  Pi </title> 
-<p> 
-for count in range(1,100)
-print'Hello&nbspWorld...'
-print "/p> <body> </html>
+print '<title> lighttpd Simple Python </title><p>'
+for count in range(1,100):
+    x = datetime.datetime.now().time()
+    print 'Current time is ' 
+	print x
+    print "</p> </body> </html>"
 {% endhighlight %}
 
-Finally, restart the lighttpd service.
+In the file system, we should see
+{% highlight ruby %}
+ # ls -l /var/www/cgi-bin/
+total 4
+-rw-r--r-- 1 root root 315 Apr 30 17:54 serverTime.py
+{% endhighlight %}
+
+Give executable permission to your python script.
+{% highlight ruby %}
+
+  # chmod 755 /var/www/cgi-bin/serverTime.py 
+{% endhighlight %}
+
+[Note] - In the python script, Shehbang is very necessary - #! /usr/bin/python otherwise it won't work.
+You can check this reference for more understanding. 
+
+[Shehbang](https://stackoverflow.com/questions/6908143/should-i-put-shebang-in-python-scripts-and-what-form-should-it-take)
+
+I think the best way to debug lighttpd is by running the lighttpd daemon into foreground and using strace.
+This way we get to know what is it doing and why is it failing.
 
 {% highlight ruby %}
-#service lighttpd restart
+#strace lighttpd -D -f /etc/lighttpd/lighttpd.conf
 {% endhighlight %}
 
+Now, when I access the page, I see that this script is available as downloadable rather than running.
+
+{% highlight ruby %}
+  http://10.21.12.74/cgi-bin/serverTime.py
+{% endhighlight %}
+
+<img src="/assets/img/Python_script_as_downloadable.png" alt="Python_script_as_downloadable">
+
+**What I am missing?**
+
+oops, I missed to enable cgi as described in the home page of cgi.
+I need to enable cgi mode in lighttpd by running the following command.
+
+{% highlight ruby %}
+#lighty-enable-mod cgi
+{% endhighlight %}
+
+Now, Run "service lighttpd force-reload" to enable changes
+
+{% highlight ruby %}
+#service lighttpd force-reload
+{% endhighlight %}
+
+Now, it is good and running. You can see its outcome.
+
+<img src="/assets/img/ServerTime.png" alt="ServerTime">
+
 This brings an end to this article.
+
+[Reference](https://mike632t.wordpress.com/2013/09/21/installing-lighttpd-with-python-cgi-support/)

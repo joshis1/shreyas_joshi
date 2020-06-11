@@ -5,7 +5,8 @@ date:   2020-06-12 16:23:31 +1300
 categories: Devops
 ---
 
-This article is all about different types of AWS Storage.
+This article is all about different types of AWS Storage.  
+
 **Types of AWS Storage**
 
 There are total 5 types of storage.

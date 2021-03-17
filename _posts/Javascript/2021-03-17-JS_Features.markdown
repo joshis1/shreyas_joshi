@@ -6,95 +6,183 @@ categories: Javascript
 ---
 
 This article is all about javascript basics and its comparison with C++.
+Both of these languages are case sensitive and you will see many similarity and various dissimilarity between them. Obviously, we are comparing apples with oranges but they both are inherited from the fruit class. So, they cannot be poles apart. Javascript is an interpreted language whereas C++ is a compile based language. I still feel that the basics of programming cannot change drastically. Every langauage will have control blocks - if/else, for loop, etc. The internals will vary but cannot be completely altogether. The syntax will vary for sure but you will see that many syntax of C and javascript are similar. 
 
-The first step here is to install nodejs.
-If you are using Ubuntu, then you could do
+**Keywords**
+var, true, false is a keyword in javascript. 
+In C++, we don't have var keyword. We have int, float, char as primitive type. However, in javascript we just have only var. The true, false are boolean type and basically we just assign this to var type. In C++, we also have true, false defined in cstdbool or in C - stdbool.h. true in C is nothing but 1 and flase in c is nothing but 0. This even holds true in javascript.
 
 {% highlight ruby %}
-$sudo apt-get install nodejs
+var variable = 5;  //look 5 is a number or integer in C
+console.log(variable);
+var variable = true; //true is boolean in javascript and C
+console.log(variable);
 {% endhighlight %}
 
-In this article, I will share a lot of screen shots that will help to identify what we are trying to do.
+true, false is boolean.
 
-**Extensions**
-Just like marketplace in eclipse, visual studio uses the terminology extensions.
-You could download a lot of packages from extension. Here is extension.
+{% highlight ruby %}
+var variable = 'text'; // text is a string in javascript.
+console.log(variable);
+{% endhighlight %}
 
-<img src="/assets/img/VSCode_Extension.png" alt="Visual Studio Code Extension">
+**typeof**
+The floating point and integers are called numbers in javascript.
+In C++, we have float and int keywords. However in javascript there is no distinction. It is simply numbers in javascript.
 
-**LiveServer extension**
+{% highlight ruby %}
+var var1 = 6.5;
+console.log(typeof var1); // number
 
-We would not like to stop and start the application all the time in order to see the results.
-This 'LiveServer' extension will read the code on the fly and there is no need to restart the application.
-All the changes will be picked by the liveserver. This is a very handy extension. Here is the picture to 
-download the liveserver.
+var var2 = 'text';
+console.log(typeof var2); // string
 
-<img src="/assets/img/LiveServer.png" alt="Live Server Extension">
+var var3 = true;
+console.log(typeof var3); // boolean
 
-**Use Standard Javascript version i.e. ECMA 6**
+{% endhighlight %}
 
-This will help to auto complete the code and use the standard ES version 6 javascript.
+**typeid**
+In C++, we have typeid to check the typeof the variable.
+It is used in RTTI i.e. run time type identification.
 
-Here is the screen shot
+{% highlight ruby %}
 
-<img src="/assets/img/JS_ES6_Install.png" alt="Javascript ES6 Installation">
+#include <typeinfo>
+#include <iostream>
 
-**Auto Close tag**
 
-This will help to automatically close the tag.
-Here is the description about it.
-[Auto Close tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag)
+class myclass
+{
+  int mynumber;
+  float myfloat;
+};
 
-**Auto rename tag**
+int main()
+{
+  int myint = 10;
+  float myfloat = 1.2;
+  char mychar = 'a';
+  std::string mystring = "My String";
+  int arr[3] = {1,2,3};
+  myclass myclass_instance;
+  std::cout<<"Type of myint is "<<typeid(myint).name()<<std::endl;
+  std::cout<<"Type of myfloat is "<<typeid(myfloat).name()<<std::endl;
+  std::cout<<"Type of mychar is "<<typeid(mychar).name()<<std::endl;
+  std::cout<<"Type of mystring is "<<typeid(mystring).name()<<std::endl;
+  std::cout<<"Type of arr is "<<typeid(arr).name()<<std::endl;
+  std::cout<<"Type of myclass_instance is "<<typeid(myclass_instance).name()<<std::endl;
+  return 0;
+}
 
-This will help to automatically rename the closing or opening tag when
-you change one of the tag. Here is the description about it.
+{% endhighlight %}
 
-[Auto rename tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag)
+Here are the results.
 
-**babel ES6/ES7**
+{% highlight ruby %}
 
-This will help to highlight the grammar error in the code like wrong
-variable names, etc. Here is the description, its better to keep the code good and meaningful. 
+ ./test1.out
+Type of myint is i
+Type of myfloat is f
+Type of mychar is c
+Type of mystring is NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Type of arr is A3_i
+Type of myclass_instance is 7myclass
 
-[babel ES6/ES7](https://marketplace.visualstudio.com/items?itemName=dzannotti.vscode-babel-coloring)
+{% endhighlight %}
 
-**Settings that will help your project**
+**Arrays**
+Array is a collection of values. It can be a collection of the same types or mixed types. Array is actually an object.
+Here is an example. 
 
-a) Auto Save the changes  - after certain delay.
+{% highlight ruby %}
 
-<img src="/assets/img/afterDelay.png" alt="After delay settings">
+var var4 = [1,2,3]; // array collection of values.
+console.log(typeof var4); // object
 
-b) wordwrap turn to on - so that the long line falls back to next line.
+var var1 = [1,2,3,'4'];
 
-<img src="/assets/img/wordwrap.png" alt="word wrap settings">
+{% endhighlight %}
 
-c) code-runner.clearPreviousOutput: true - so that you don't have to clear the terminal output all the time manually.
+**How to access array elements**
+This is just like C or C++ language where we use subscript to 
+access the particular element in the array. It is very similar to C except that when we access array out of boundaries then in javascript it returns undefined. In C, technically it is still undefined but in C you might get a crash or some junk value depending on how it is laid out in the memory.
 
-<img src="/assets/img/CodeRunner.png" alt="Code Runner clear previous output settings">
+{% highlight ruby %}
 
-Here is the working example code that runs on the IDE.
+var var4 = [1,2,3]; // array collection of values.
+console.log(var4[0]); // first element in the array.
 
-<img src="/assets/img/vscode_running_example.png" alt="Code Runner clear previous output settings">
+console.log(var4[4]); // undefined.
 
-Also, you could use the run and debug button to run the code.
+{% endhighlight %}
 
-<img src="/assets/img/VSCode_Run_Debug.png" alt="VS Code run and debug">
+Example in C - Array out of boundaries 
 
-I use vscode on ubuntu 18.04.
+{% highlight ruby %}
 
-Another great resource for javascript programming is the online IDE.
-This is my favourite IDE.
+#include <stdio.h>
 
-[codepen](https://codepen.io/pen/)
+int main()
+{
+   int x[] = { 1,2,3};
+   printf("The first value is x[0] = %d\r\n", x[0]);
+   printf("Array out of bounds 4th element = %d\r\n", x[4]);
+   return 0;
 
-**Resources to learn javascript**
-Check the website freecodecamp.org, and go to Javascript algorithms, basic data structures. You could try out
-basic algorithm solving. 
+}
 
-**Documentation for javascript**
-1) MDN - Mozilla development network
-2) Javascript reference - developer's guide.
-3) devdocs.io
+{% endhighlight %}
 
-This brings an end to this article. Happy programming.
+The result I saw was - 
+
+{% highlight ruby %}
+
+ ./test2.out
+The first value is x[0] = 1
+Array out of bounds 4th element = 545694709
+
+{% endhighlight %}
+
+As you can see, we got some garbage value when we accessed
+array out of boundaries. This is technically undefined because we can even get a crash.
+Example - 
+
+{% highlight ruby %}
+#include <stdio.h>
+
+int main()
+{
+   int x[] = { 1,2,3};
+   printf("The first value is x[0] = %d\r\n", x[0]);
+   printf("Array out of bounds 4th element = %d\r\n", x[432423423]);
+   return 0;
+
+}
+
+{% endhighlight %}
+
+Now, when I run it , I get a bus error - crash since I am accessing some unreachable memory.
+
+{% highlight ruby %}
+ ./test2.out
+The first value is x[0] = 1
+Bus error
+{% endhighlight %}
+
+**Undefined in javascript**
+We cannot set undefined in javascript.
+The undefined is a javascript error message.
+Just like in C we have array out of boundaries 
+or in C++ we have exception thrown. 
+When javascript cannot do something it throws
+undefined error.
+
+{% highlight ruby %}
+/** This is wrong **/
+var var1 = undefined; // we cannot set variable to undefined.
+console.log(var1); //undefined.
+
+{% endhighlight %}
+
+

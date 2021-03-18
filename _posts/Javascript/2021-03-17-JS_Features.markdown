@@ -96,8 +96,7 @@ Type of myclass_instance is 7myclass
 
 **Arrays**
 
-Array is a collection of values. It can be a collection of the same types or mixed types. Array is actually an object.
-Here is an example. 
+Array is a collection of values. It can be a collection of the same types or mixed types in javascript. Array is actually an object in javascript. In C++ array cannot be of mixed types. Also, the array may not be an object type in C++, if the array is a collection of int then it is not an object type. However, if the array is a collection of class type then it is an object type. Here is an example. 
 
 {% highlight ruby %}
 
@@ -184,4 +183,149 @@ console.log(var1); //undefined.
 
 {% endhighlight %}
 
+**null**
 
+To reset a value use null. 
+
+{% highlight ruby %}
+
+var var1 = null;
+console.log(var1); // null
+
+{% endhighlight %}
+
+**Is null or nullptr and undefined values are same**
+
+Yes, the values are same but they are of different types.
+In C++, nullptr is introduced in C++ 11 to avoid ambiguity. Here is an example.
+
+{% highlight ruby %}
+
+#include <iostream>
+
+void func(int *a);
+void func(int b);
+
+void func(int *a)
+{
+   std::cout<<"func with pointer type called"<<std::endl;
+}
+
+void func(int b)
+{
+   std::cout<<"func with int type called"<<std::endl;
+}
+
+int main()
+{
+   func(NULL);
+   return 0;
+}
+
+{% endhighlight %}
+
+This doesn't compile in C++ world because we have overloaded the function func(). Now, NULL can call func(int b) as well as func(int *a) because NULL is nothing but (void *) 0. 
+Look at the compilation error.
+
+{% highlight ruby %}
+
+$g++ -std=c++11 test2.cpp -o test2.out
+test2.cpp: In function ‘int main()’:
+test2.cpp:21:13: error: call of overloaded ‘func(NULL)’ is ambiguous
+   21 |    func(NULL);
+      |             ^
+test2.cpp:7:6: note: candidate: ‘void func(int*)’
+    7 | void func(int *a)
+      |      ^~~~
+test2.cpp:12:6: note: candidate: ‘void func(int)’
+   12 | void func(int b)
+
+{% endhighlight %}
+
+**How do we fix the above issue?**
+
+nullptr is a keyword introduced in C++11. This fixes the above issue described. In order to initialize pointers with some initial reset value, we use nullptr. Now, when we call func(nullptr), it will call the func(int *a). If we call func(0) then it will call func(int b). Here is the code.
+
+{% highlight ruby %}
+#include <iostream>
+
+void func(int *a);
+void func(int b);
+
+void func(int *a)
+{
+   std::cout<<"func with pointer type called"<<std::endl;
+}
+
+void func(int b)
+{
+   std::cout<<"func with int type called"<<std::endl;
+}
+
+int main()
+{
+   func(0);
+   func(nullptr);
+   return 0;
+}
+
+{% endhighlight %}
+
+Now, let's compile this out and run.
+
+{% highlight ruby %}
+
+./test2.out
+func with int type called
+func with pointer type called
+
+{% endhighlight %}
+
+In javascript, we initialize the  variable with simply null. In javascript null is nothing but an object.
+
+{% highlight ruby %}
+
+var x = null;
+console.log(typeof x);  // object
+
+{% endhighlight %}
+
+**Is the value of null same as undefined**
+
+As you can see below, the undefined type is undefined and null type is object.
+However, the value is same.
+
+{% highlight ruby %}
+
+console.log(null == undefined); // true
+var y = undefined;
+console.log(typeof y); // undefined 
+
+{% endhighlight %}
+
+**Check the value and type together**
+
+In order to check the value and type together in javascript, use triple equals symbol i.e. ===.
+
+{% highlight ruby %}
+
+console.log(null === undefined); // false
+
+{% endhighlight %}
+
+**NaN**
+
+NaN means not a number. If something goes wrong with the number operation then we will get NaN. For e.g. multiplying string with number. It is more like an error message.
+
+{% highlight ruby %}
+
+var var1 = NaN; 
+console.log(var1); //NaN
+console.log(typeof var1); //  number
+{% endhighlight %}
+
+This brings end to the very basic comparison of javascript features with C++.
+
+References - 
+
+http://www.vishalchovatiya.com/mastering-c-books-courses-tools-tutorials-blogs-communities/ 

@@ -52,7 +52,7 @@ int main()
 }
 {% endhighlight %}
 
-***Using strict mode in Javascript**
+**Using strict mode in Javascript**
 
 Javascript doesn't need semicolon to terminate the statement. It can still work without even semicolon. It can use line break to figure out the end of the statement. However, it is not a good practice to omit the semicolon. We should always terminate the statement using semicolon. In C++, we will get compile time error if we omit semicolon. Semicolon helps to identify the end of the instruction. Even you can omit the keyword var when assigning the value to the variable. However, it is not a good practice. You can restrict the user not to do that by using the "use strict".
 
@@ -61,7 +61,7 @@ Javascript doesn't need semicolon to terminate the statement. It can still work 
 
 {% endhighlight %}
 
-**Other bad things allowed by Javascript**
+**Other tricks allowed by Javascript**
 
 You can change the value of the var from number to string or some other data type. This is true because javascript is loosely typed language. Unlike C++, where we cannot put string into a float variable type. In Javascript, we can do so. Here is an example. 
 
@@ -88,11 +88,11 @@ It is a behaviour of moving declarations to the top. A variable can be declared 
 
 {% endhighlight %}
 
-In C++, you cannot do that. You will get compilation error. Ideally, even in javasript you shouldn't use a variable before declaring it.
+In C++, you cannot do that. You will get compilation error. Ideally, even in javascript you shouldn't use a variable before declaring it.
 
 **functions in javascript**
 
-In javascript, you can create functions using keyword function. In C++, you don't have to write this keyword function.
+In javascript, you can create functions using keyword function. In C++, you don't have to write the keyword function.
 
 {% highlight ruby %}
 
@@ -155,7 +155,7 @@ anotherFunc(); // calc
 
 {% endhighlight %}
 
-You can see that functions in javascript are more or less like C only. It is just that function is a type in javascript whereas in C there is no such keyword function. We just need signature in C or C++. In Javascript, we need function keyword.
+You can see that basic functions in javascript are more or less like C only. It is just that function is a type in javascript whereas in C there is no such keyword function. We just need signature in C or C++. In Javascript, we need function keyword.
 
 **Control Structures**
 
@@ -211,7 +211,6 @@ int main()
         }
         return 0;
 }
-
 
 {% endhighlight %}
 
@@ -289,7 +288,7 @@ Non-Zero is true condition
 
 {% endhighlight %}
 
-Please note that non-zero is treated as true only in conditional statement. It doesn't mean boolean true is a non-zero value. In fact, in javascript and C language true is nothing but 1 and false is nothing but 0. But, also note that they are two different data types. The following code will explain it. Here is the javascript check.
+Please note that non-zero is treated as true only in conditional statement. It doesn't mean boolean true is a non-zero value. In fact, in javascript and C language true is nothing but 1 and false is nothing but 0 if we look from value perspective. But, also note that they are two different data types. The following code will explain it. Here is the javascript check.
 
 {% highlight ruby %}
 console.log(1 == true); // true
@@ -299,7 +298,38 @@ console.log(0 === false); //false since they are different data types.
 
 {% endhighlight %}
 
-This brings end to the conditional struct of javascript.
+This holds true even in C language. Let's check that out.
+
+{% highlight ruby %}
+
+#include <stdio.h>
+#include <stdbool.h>
+
+int main()
+{
+  printf("Check 1 == true is %d \r\n", (1 == true));
+  printf("Check 0 == false is %d \r\n", (0 == false));
+  printf("Check if non-zero is true or not %d \r\n", (34 == true));
+  printf("Check if any negative number is false or not %d \r\n", (-10 == false));
+  //printf( 0 == false);
+
+  return 0;
+}
+
+{% endhighlight %}
+
+Here is the output.
+
+{% highlight ruby %}
+./test_true_false.out
+Check 1 == true is 1
+Check 0 == false is 1
+Check if non-zero is true or not 0
+Check if any negative number is false or not 0
+
+{% endhighlight %}
+
+This brings end to the conditional structs of javascript.
 
 References - 
 

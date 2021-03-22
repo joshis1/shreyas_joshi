@@ -329,6 +329,8 @@ Check if any negative number is false or not 0
 
 {% endhighlight %}
 
+Also, in javascript a text will be treated as true in the condition and null as false in the condition. 
+
 This brings end to the conditional structs of javascript.
 
 References - 

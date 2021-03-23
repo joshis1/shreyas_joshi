@@ -755,13 +755,479 @@ b-a -11
 
 {% endhighlight %}
 
-**Multiplication**
+**Multiplication of numbers in C++ and javascript**
+
+The multiplication of numbers in C++ and javascript are same. Here is the javascript version using shorthand.
+
+{% highlight ruby %}
+
+ var a = 12;
+ var b = 2;
+ a *=b;
+console.log(a); //24
+
+{% endhighlight %}
+
+Here is the C++ version, which is same.
+
+{% highlight ruby %}
+
+  #include <iostream>
+  int main()
+  {
+    int a = 12;
+    int b = 2;
+    a *=b;
+    std::cout<<a<<std::endl; //24
+    return 0;
+  }
+
+{% endhighlight %}
+
+Just like pre-increment or post-increment, we cannot do pre or post multiplication in C or javascript. Here is a code snippet. You will get a syntax error in javascript as well as C++.
+
+{% highlight ruby %}
+ var a = 12;
+ console.log(a**);
+{% endhighlight %}
+
+Here is the C++ version.
+
+{% highlight ruby %}
+
+#include <iostream>
+
+int main()
+{
+  int a = 12;
+  std::cout<<a**;
+  return 0;
+}
+
+$ g++ test_multiply_shorthand.cpp -o test_multiply_shorthand.out
+test_multiply_shorthand.cpp: In function ‘int main()’:
+test_multiply_shorthand.cpp:6:17: error: expected primary-expression before ‘;’ token
+    6 |   std::cout<<a**;
+
+{% endhighlight %}
+
+**Multiplying float number with integer in javascript and C++**
+
+There is no concept of floating point and int in javascript. In javascript the decimal number and integers are nothing but numbers only. In fact, you will find a lot of issues with floating point numbers in javascript here. Execuse me a number in javascript which has decimal points since there is nothing called floating point in javascript.
+
+{% highlight ruby %}
+
+ var a = 1.3;
+ var b = 2;
+ console.log(a*b); //2.6
+
+{% endhighlight %}
+
+Similarly in C++, you need to use float to store the result.
+
+{% highlight ruby %}
+
+#include <iostream>
+
+int main()
+{
+  float a = 1.3;
+  int b = 2;
+  std::cout<<a*b<<std::endl;
+  float c = a * b;
+  int d = a * b;
+  std::cout<<"Stored in float "<<c<<std::endl;
+  std::cout<<"Stored in int "<<d<<std::endl;
+  return 0;
+}
+
+./test_float.out
+2.6
+Stored in float 2.6
+Stored in int 2
+
+{% endhighlight %}
+
+As you can see above the results are same. If you use int to store the floating point number in C then the decimal part will be truncated.
+
+**Multiplying floating point number with another floating point number in javascript and C++**
+
+Well, this is a very big topic in the sense that javascript stores number in the 64 bit floating point adhering to the IEEE 754 standard. This leads to the fact that floating point mathematics doesn't lead to the accurate number. For example, open the calculator and multiply 1.3 and 2.2, you should get 2.86. However, when you do the same in the javascript world, you will get some other result. This is because of the fact that javascript stores the number according to the IEEE 754 standard i.e. 64 bit binary format. Here is the code snippet.
+
+{% highlight ruby %}
+
+console.log(1.3 * 2.2); //2.8600000000000003
+
+{% endhighlight %}
+
+So, what is IEEE-754 standard says, it represents the number in 1 bit for sign, 11 bits for exponent and 52 bits for Mantissa. For example, represent 263.3 in the 
+IEEE-754 standard.
+
+{% highlight ruby %}
+
+ 263 in binary is 100000111
+ 0.3 in binary is (0.01001-----)
+ Now, combine them 
+ 100000111.01001-----
+ Now, move the decimal point to extreme left with only 1 bit left. Here is the output.
+
+ 1.0000011101001----- , in order to do that you shifted 8 positions.
+ Now, you have to multiply with 2^8. 
+
+ 1.0000011101001----- * 2^8 
+
+ Now, represent this in IEEE 754 format.
+ Sign bit is 0 since it is a positive number.
+ sign - 0
+ exponent - 8 exp bits, add 127 + 8 to 135
+ Mantissa - fraction bits - 0000011101001
+
+{% endhighlight %}
+
+This was all about internals. How, do we actually get what we want. We can use big.js javascript library to get the normal results. Also, we can use toFixed() to get around this. Here is a code snippet.
+
+{% highlight ruby %}
+
+ var a = 1.3;
+ var b = 2.2;
+ console.log((a * b).toFixed(2)); //2.86
+
+{% endhighlight %}
+
+**Multiplying floating number represented as string with a number**
+
+In javascript, when you try to multiply '2.2' i.e a string with a number, javascript is intelligent enough to deduce that you want to multiply two numbers. Thus, it automatically converts the string '2.2' into a number and then multiplies it with another number.  Here is the code snippet.
+
+{% highlight ruby %}
+
+ var a = 2;
+ var b = '2.2';
+ console.log(a*b); //4.4
+
+{% endhighlight %}
+
+In C++, this cannot happen implicitly, you need to convert the string to a floating point. Just like std::stoi(), you can use std::stof(). Ideally, you should do this inside try block to catch any translation issues. Here is the code block.
+
+{% highlight ruby %}
+
+#include <iostream>
+
+int main()
+{
+  int a = 2;
+  std::string b = "2.2";
+
+  float c = std::stof(b);
+  std::cout<<c<<std::endl;
+  std::cout<<"Result = "<<a*c<<std::endl; // 4.4 
+
+  return 0;
+}
+
+{% endhighlight %}
+
+**Multiplying a alphanumeric string with another string**
+
+In javascript, this will lead to NaN i.e. not a number. In C++, you will get a compilation error when you try to multiply two strings. Here is the javascript code snippet.
+
+{% highlight ruby %}
+
+  var a = 'another';
+  var b = 'join';
+  console.log(a*b); //NaN
+
+{% endhighlight %}
+
+You cannot do this in C++, you will get compile time error. no match for operator *.
+
+**Multiplying number with null**
+
+In javascript null or in C++ NULL is nothing but 0. So, if you multiply null with a number then you will get 0 in both the cases. Here is the code snippet. Ideally, you never multiply null with a number but what if somebody does is the question.
+
+{% highlight ruby %}
+
+  var a = 12;
+  var b = null;
+  console.log(a*b); //0
+
+{% endhighlight %}
+
+Let's see this in C++. In C++, we have NULL and not null. The NULL is nothing but pointer type i.e (void*)0. So, in the below code first you will get warning since you are converting from pointer type to non-pointer type. However, you will get the same result i.e. 0. Here is the code.
+
+{% highlight ruby %}
+
+#include <iostream>
+int main()
+{
+  int a = 12;
+  int b = NULL;
+
+  std::cout<<a*b<<std::endl;
+  return 0;
+}
+
+$g++ test_number_null_mul.cpp -o test_number_null_mul.out
+test_number_null_mul.cpp: In function ‘int main()’:
+test_number_null_mul.cpp:6:11: warning: converting to non-pointer type ‘int’ from NULL [-Wconversion-null]
+    6 |   int b = NULL;
+
+Output - 
+$ ./test_number_null_mul.out
+0
+
+{% endhighlight %}
+
+**Multiplying number with infinity**
+
+The results are same if you multiply a number with infinity then the result is infinity. In C++, we have to use floating point to get the infinity. You have to use static method infinity() of numeric_limits template.
+Here is an example. 
+
+{% highlight ruby %}
+
+#include <iostream>
+#include <limits>
+
+int main()
+{
+  float a = std::numeric_limits<float>::infinity();
+  std::cout<<a<<std::endl;
+  int number = 12;
+
+  std::cout<<a * number<<std::endl;
+
+  return 0;
+}
+
+{% endhighlight %}
+
+Here is the output and you can see that you get infinity as a result.
+
+{% highlight ruby %}
+./test_infinity.out
+inf
+inf
+
+{% endhighlight %}
+
+In javascript, you have a keyword called Infinity. When you multiply a number with Infinity you get Infinity as a result. Here is a code snippet.
+
+{% highlight ruby %}
+
+var a = Infinity;
+var number = 12;
+console.log(a*number); // Infinity
+
+{% endhighlight %}
+
+**Division and Modulus**
+
+This is very much like C/C++.
+You can use / to get the value and % to get the remainder.
+Here is an example.
+
+{% highlight ruby %}
+
+  var a = 12;
+  var b = 2;
+  a/=b;
+  console.log(a);  //6
+{% endhighlight %}
+
+Let's do the same thing in C/C++. You will find that it behaves exactly the same.
+
+{% highlight ruby %}
+
+ #include <iostream>
+
+ int main()
+ {
+   int a = 12;
+   int b = 2;
+   a/=b;
+   std::cout<<a<<std::endl; //6
+   return 0;
+ }
+
+{% endhighlight %}
+
+**Division of a number by a number in a string format**
+
+In C++, you need to convert that number in a string format to a number format then only you can do the division. However, in javascript this will happen implicitly. Here is the code.
+
+{% highlight ruby %}
+
+ var a = 12;
+ var b = '2';
+ console.log(a/b);
+
+{% endhighlight %}
+
+**Floating point division in javascript**
+
+The problem exists even for floating point division. This is because of the fact that we have already discussed - IEEE -754. For example, if you divide 3.3/2.2, you should get 1.5. However, in javascript you get the answer different. Here is the code snippet.
+
+{% highlight ruby %}
+
+  var a = 3.3
+  var b = 2.2;
+  console.log(a/b); // 1.4999999999999998
+  console.log((a/b).toFixed(2)); // 1.50
+
+{% endhighlight %}
+
+**Modulus gives remainder of the division**
+
+In C,C++ and javascript the modulus operator i.e % gives the remainder of the division. Here is an example.
+
+{% highlight ruby %}
+ 
+   var a = 10;
+   var b = 3;
+   console.log(a % b); // 1
+
+{% endhighlight %}
+
+**Division by Zero**
+
+If you divide a number by zero in javascript then you will get infinity as a result. In C++, if you divide a floating point with a zero then you will get infinity. However, if you divide integer with zero then you will get floating point exception error. Here is a C++ version.
+
+{% highlight ruby %}
+
+#include <iostream>
+
+int main()
+{
+  float a = 10;
+  float b = 0;
+  std::cout<<a/b<<std::endl;
+  std::cout<<5/0<<std::endl;
+  return 0;
+}
+
+{% endhighlight %}
+
+Here is the output. As you can see when the floating point number is divided by zero then you get infinity. However, you get floating point exception when you divide an integer with zero. I will say all these are architecture specific. If you have a power pc architecture then you might not even get an exception because power pc will handle the exception. I will say in C/C++ it is more architecture specific. I will never try to divide a number by zero in C/C++. If there is a possibility then I will keep it inside a try block and catch any exception. 
+
+{% highlight ruby %}
+
+$ ./test_division_by_zero.out
+inf
+Floating point exception
+
+{% endhighlight %}
+
+Here is a javascript version of dividing a number with zero.
+
+{% highlight ruby %}
+
+  var a = 10;
+  var b = 0;
+  console.log(a/b); // infinity.
+  console.log(a%b); //NaN -- cant get any remainder.
+
+{% endhighlight %}
+
+**Dividing a number with infinity**
+
+When you divide a number with infinity you get zero both in C, C++ and javascript. Here is a C++ code.
+
+{% highlight ruby %}
+#include <iostream>
+#include <limits>
+
+int main()
+{
+  float a = std::numeric_limits<float>::infinity();
+  int b = 10;
+  std::cout<<b/a<<std::endl;  // 0
+  return 0;
+}
+
+{% endhighlight %}
+
+Similalry, when you divide a number with infinity in javascript you get 0. Here is a javascript code.
+
+{% highlight ruby %}
+
+ var a = Infinity;
+ var b = 10;
+ console.log(b/a); // 0
+  
+{% endhighlight %}
+
+**Operators to compare values**
+
+In javascript, as you already know that double equals doesn't check the typeof the variable it simply compares the values. So, it is a best practice to use triple equals in order to compare the values in javascript. Here is the code snippet.
+
+{% highlight ruby %}
+
+console.log( 1 == 1); // true
+console.log( 1 === 1); // true
+
+console.log( 1 == '1'); // true
+console.log( 1 === '1'); // false
+
+console.log( 1 != 2); // true
+console.log( 1 != '1'); // false
+console.log( 1 !== '1'); // true
+
+console.log( 1 >  0); // true
+console.log( 1 >  1); // false
+console.log(1 >= 1); //true
+
+{% endhighlight %}
+
+**Wierd comparison rules in javascript**
+
+We cannot compare NaN with anything. We cannot compare null with anything. If we do so then it will return false. Here is the code snippet.
+
+{% highlight ruby %}
+
+ console.log( NaN == NaN); //false
+ console.log( 0 == null);  //false
 
 
+{% endhighlight %}
 
-This brings end to the conditional structs of javascript.
+In javascript, null and undefined values are true. 
+However, zero and undefined values are different. This is pretty wierd stuff, you need to simply memorize it. A rule of thumb is that anything compare with undefined is always false. 
+
+{% highlight ruby %}
+
+ console.log( null == undefined); //true
+ console.log( 0 == undefined);  //false
+ 
+ {% endhighlight %}
+
+**boolean operators**
+
+This is same in C/C++ and javascript. For 'and' condition you have to use && and for 'or' condition you have to use || operator. Also, you can use ! operator to negate the condition. 
+
+**Ternary operator**
+
+Just like in C, you can use ternary operator in javascript also. Here is an example.
+
+{% highlight ruby %}
+
+var a = 10;
+var b = 10;
+console.log( a == b ? 'Equal' : 'Not Equal'); 
+
+{% endhighlight %}
+
+**Precedence in javascript**
+
+Precedence in javascript follows mathematics rule of BODMAS. Also, you can refer javascript operator precedence MDN - 
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
+
+
+This brings end to the basic language constructs of javascript which is very much comparable to C,C++ except the floating point.
 
 References - 
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
+
 
 Practice javascript using - 
 

@@ -8,6 +8,7 @@ categories: Javascript
 This article is all about basic javascript features like switch and looping. This is in continuation to the basic javascript conditional structs.
 
 **switch**
+
 This is very similar to C/C++ language. 
 The syntax looks same i.e. switch, case, default and break. Also, the behaviour is same. In C++, you cannot use string in the case statement whereas in javascript you can do so. Here is an example.
 
@@ -203,6 +204,7 @@ int main()
 {% endhighlight %}
 
 **Looping through arrays**
+
 In javascript, you can loop through array using its property length to identify the length of the array.
 However, in C++, it is not that straight forward. Here is an example. 
 

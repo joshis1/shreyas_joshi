@@ -1222,7 +1222,7 @@ Precedence in javascript follows mathematics rule of BODMAS. Also, you can refer
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
 
 
-This brings end to the basic language constructs of javascript which is very much comparable to C,C++ except the floating point.
+This brings end to the basic language constructs of javascript which is very much comparable to C, C++ except the floating point.
 
 References - 
 

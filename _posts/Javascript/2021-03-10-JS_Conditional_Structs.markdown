@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Basic Javascript conditional structs and comparison with C/C++"
-date:   2021-03-18 14:13:31 +1300
+date:   2021-03-10 14:13:31 +1300
 categories: Javascript
 ---
 

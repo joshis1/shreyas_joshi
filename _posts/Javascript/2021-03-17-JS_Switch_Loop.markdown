@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Basic Javascript switch, looping and comparison with C/C++"
-date:   2021-03-21 14:13:31 +1300
+date:   2021-03-17 14:13:31 +1300
 categories: Javascript
 ---
 

@@ -153,7 +153,37 @@ Math object provides a lot of built in methods and properties. Here is a list of
 
 {% endhighlight %}
 
+**Date Object**
 
+The date object has a lot of built in methods. You could refer Date MDN javascript documentation to get more information. Here are some of the list.
+
+{% highlight ruby %}
+
+  var today = new Date();
+  console.log(today); //gets an object
+  console.log(today.toString()); //"Mon Apr 26 2021 08:25:13 GMT+1000 (Australian Eastern Standard Time)"
+
+  //with numbers, the month is starting from 0 rather than 1. Thus 0 is January.
+  var today = new Date(2021, 03, 30);
+  console.log(today.toString()); //
+"Fri Apr 30 2021 00:00:00 GMT+1000 (Australian Eastern Standard Time)"
+
+// with string format, it can parse 5 as May only
+ var today = new Date('2021/05/1');
+ console.log(today.toString()); //"Sat May 01 2021 00:00:00 GMT+1000 (Australian Eastern Standard Time)"
+
+  //parse gives number of milliseconds elapsed since January 1970 to this date.
+ console.log(Date.parse('2021/05/1')); //
+1619791200000
+
+var today = new Date();
+console.log(today.getDate()); //26
+
+// the weekday in js starts from Sunday i.e. 0
+// today is Monday therefore 1.
+console.log(today.getDay()); //1
+
+{% endhighlight %}
 
 References - 
 

@@ -113,6 +113,48 @@ Please note that string is immutable therefore when you do operations on a strin
 
 {% endhighlight %}
 
+**Math Objects**
+
+Math object provides a lot of built in methods and properties. Here is a list of such properties and methods.
+
+{% highlight ruby %}
+
+  var pi = Math.PI; 
+  console.log(pi); //3.141592653589793
+
+  var e = Math.E;
+  console.log(e); //2.718281828459045
+
+  var a = -3;
+  console.log(Math.abs(a)); //3
+
+  var a = 1.27;
+  console.log(Math.round(a)); //1
+
+  console.log(Math.ceil(a)); //2
+  console.log(Math.floor(a)); //1
+
+  var a = 2;
+  console.log(Math.exp(a)); //7.38905609893065 nothing but e^2
+
+  var e = Math.E;
+  console.log(Math.log(e)); //1
+
+  console.log(Math.max(1, 100, 1000)); //1000
+
+  console.log(Math.min(1,100,1000)); // 1
+  console.log(Math.random()); //any floating poing with 0.00x 
+  var rand = Math.random() * 100;
+  console.log(rand); // some floating point
+  var rand1 = Math.floor(rand);
+  console.log(rand1); // now random integer ranging from 0 to 100.
+  // let's say we want from 1 to 101 any random then add 1 to it.
+  console.log(rand1 + 1);
+
+{% endhighlight %}
+
+
+
 References - 
 
 https://stackoverflow.com/questions/15455009/javascript-call-apply-vs-bind#:~:text=Call%20invokes%20the%20function%20and,and%20any%20number%20of%20arguments. 

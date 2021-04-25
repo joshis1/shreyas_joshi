@@ -50,7 +50,68 @@ The setInterval() once started will keep executing forever. However, there is a 
 
 **Transforming format and Values**
 
+There are certain in built methods that are very much important in order to transform the format from string to a number.
 
+{% highlight ruby %}
+
+var a = '5';
+console.log(a); // "5"
+console.log(parseInt(a)); //5
+
+var a = 'test';
+console.log(parseInt(a)); // NaN
+
+var a = 'FB123';
+console.log(parseInt(a)); //NaN
+console.log(parseInt(a,16)); //1028387
+
+var a = 10;
+console.log(a.toString()); // '10'
+
+var a = 10.3;
+console.log(a.toFixed()); // 10
+
+console.log(a.toFixed(2)); //10.30
+
+{% endhighlight %}
+
+**string functions**
+
+string is nothing but an array of characters. In short, string can be treated like an array i.e. we can use subscript to access a particular element in a string. Here is an example.
+Please note that string is immutable therefore when you do operations on a string then it won't modify the existing string but it will return another string.
+
+{% highlight ruby %}
+  var string = 'Any text';
+  console.log(string);
+
+  console.log(string.length); //8
+  console.log(string[2]); //'y'
+
+  console.log(string.charAt(2)); //'y'
+
+  var newString  = string.concat(' add new string');
+
+  console.log(newString); //"Any text add new string"
+
+  var uppString = string.toUpperCase();
+  console.log(uppString); //"ANY TEXT"
+
+  var lowString = string.toLowerCase();
+  console.log(lowString); //"any text"
+
+  var splitString = string.split(' ');
+  console.log(splitString); //["Any", "text"]
+  console.log(splitString[0]); //"Any"
+  console.log(splitString[1]); //"text"
+
+  var userString = ' Any text ';
+  console.log(userString); //" Any text "
+  // all the heading and trailing white spaces will be removed when used trim
+  console.log(userString.trim()); //"Any text"
+
+  console.log(string); //"Any text"
+
+{% endhighlight %}
 
 References - 
 

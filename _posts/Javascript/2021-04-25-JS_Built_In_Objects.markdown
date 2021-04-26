@@ -230,6 +230,8 @@ console.log(patt1.test(s2)); //true
 
 {% endhighlight %}
 
+RegEx is very helpful in validating user input. Also, it can be helpful to find a piece of a string inside a long string.
+
 This brings an end to the built in object topic in javascript.
 
 References - 

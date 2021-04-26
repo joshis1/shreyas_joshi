@@ -185,6 +185,53 @@ console.log(today.getDay()); //1
 
 {% endhighlight %}
 
+**Regular expression**
+
+A regular expression pattern is expressed in javascript using / /. Just like string is expressed in ' ', a regular expression pattern is expressed as / /. The regular expression is nothing but an object. You can use exec() method of a regular expression object in order to do pattern matching on a string. Otherwise, you can use match() method of a string to do pattern matching. Here is an example.
+
+{% highlight ruby %}
+
+var s = 'abc';
+var patt = /ab/;
+var s1 = 'test';
+
+console.log(patt.exec(s)); //["ab"]
+console.log(s1.match(patt)); //null 
+
+var s1 = 'joo';
+var patt1 = /[j-mz]oo/;
+console.log(patt1.exec(s1)); // ["joo"]
+
+var s2 = 'loo';
+var patt1 = /[j-mz]oo/;
+console.log(s2.match(patt1)); //["loo"]
+
+var s2 = 'noo';
+var patt1 = /[j-mz]oo/;
+console.log(s2.match(patt1)); //null
+
+console.log(patt1); //[object RegExp] { ... }
+
+console.log(patt1.toString()); //"/[j-mz]oo/"
+
+{% endhighlight %}
+
+You can also use test() method of regEx object to get the result true or false based on whether the match was found or not. Here is an example.
+
+{% highlight ruby %}
+
+var s2 = 'noo';
+var patt1 = /[j-mz]oo/;
+console.log(patt1.test(s2)); //false
+
+var s2 = 'joo';
+var patt1 = /[j-mz]oo/;
+console.log(patt1.test(s2)); //true
+
+{% endhighlight %}
+
+This brings an end to the built in object topic in javascript.
+
 References - 
 
 https://stackoverflow.com/questions/15455009/javascript-call-apply-vs-bind#:~:text=Call%20invokes%20the%20function%20and,and%20any%20number%20of%20arguments. 

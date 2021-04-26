@@ -241,3 +241,14 @@ https://stackoverflow.com/questions/15455009/javascript-call-apply-vs-bind#:~:te
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind 
 
 https://jsbin.com/vomadedive/edit?html,js,console,output 
+
+https://javascript.info/settimeout-setinterval
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects 
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math 
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date 
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions 
+
